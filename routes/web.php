@@ -13,6 +13,17 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'HomeController@index');
+Route::get('/en/Data-Kebutuhan-desa', 'HomeController@kebutuhan');
+Route::get('/en/Data-Pekerjaan-desa', 'HomeController@pekerjaan');
+Route::get('/en/Data-umkm-desa', 'HomeController@umkm');
+Route::get('/en/Data-penduduk-desa', 'HomeController@penduduk');
+
+Route::get('/news/kabar-desa', 'HomeController@kabardesa');
+Route::get('/news/artikel-desa', 'HomeController@artikel');
+
+Route::get('/about/informasi-web-desa', 'HomeController@informasi');
+Route::get('/about/hubungi-web-desa', 'HomeController@hubungi');
+
+Route::get('/auth/login', 'AuthController@login');
+
