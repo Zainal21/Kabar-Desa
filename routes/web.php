@@ -26,4 +26,32 @@ Route::get('/about/informasi-web-desa', 'HomeController@informasi');
 Route::get('/about/hubungi-web-desa', 'HomeController@hubungi');
 
 Route::get('/auth/login', 'AuthController@login');
+Route::post('/auth/login', 'AuthController@proccess');
+Route::get('/auth/logout', 'AuthController@logout');
+
+
+// Admin Manage
+Route::get('/home/admin', 'DashboardController@index');
+
+
+// petugas
+Route::get('/home/petugas', 'DashboardController@petugas');
+
+// alamat
+Route::get('/home/provinsi', 'AlamatController@provinsi');
+
+Route::get('/home/kabupaten', 'AlamatController@kabupaten');
+
+Route::get('/home/kecamatan', 'AlamatController@kecamatan');
+
+// penduduk master
+Route::get('/home/penduduk', 'DashboardController@penduduk');
+
+Route::get('/home/kebutuhan', 'PendudukController@kebutuhan');
+
+Route::get('/home/pekerjaan', 'JobController@index');
+
+Route::get('/aspirasi/list', 'AspirasiController@index');
+
+
 

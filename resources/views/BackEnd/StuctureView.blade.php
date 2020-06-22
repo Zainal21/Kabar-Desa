@@ -10,12 +10,15 @@
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
   <!-- <link rel="stylesheet" href="../assets/css/font-awesome.css"> -->
   <!-- CSS Libraries -->
-  <link rel="stylesheet" href="../node_modules/jqvmap/dist/jqvmap.min.css">
+  {{-- <link rel="stylesheet" href="../node_modules/jqvmap/dist/jqvmap.min.css">
   <link rel="stylesheet" href="../node_modules/summernote/dist/summernote-bs4.css">
   <link rel="stylesheet" href="../node_modules/owl.carousel/dist/assets/owl.carousel.min.css">
-  <link rel="stylesheet" href="../node_modules/owl.carousel/dist/assets/owl.theme.default.min.css">
+  <link rel="stylesheet" href="../node_modules/owl.carousel/dist/assets/owl.theme.default.min.css"> --}}
 
   <!-- Template CSS -->
+    <!-- General CSS Files -->
+<link rel="stylesheet" href="{{asset('BackEnd/assets/css/bootstrap.min.css')}}">
+<link rel="stylesheet" href="{{asset('BackEnd/assets/css/all.css')}}">
   <link rel="stylesheet" href="{{asset('BackEnd/assets/css/style.css')}}">
   <link rel="stylesheet" href="{{asset('BackEnd/assets/css/components.css')}}">
 </head>
@@ -66,16 +69,19 @@
               <li class="nav-item dropdown">
                 <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-columns"></i> <span>Penduduk</span></a>
                 <ul class="dropdown-menu">
-                  <li><a class="nav-link" href="">Data Petugas</a></li>
-                  <li><a class="nav-link" href="">Data Provinsi</a></li>
-                  <li><a class="nav-link" href="">Data Kabupaten</a></li>
-                  <li><a class="nav-link" href="">Data Kecamatan</a></li>
-                  <li><a class="nav-link" href="">Data Penduduk</a></li>
-                  <li><a class="nav-link" href="">Data Kebutuhan</a></li>
-                  <li><a class="nav-link" href="">Data Pekerjaan</a></li>
+                  <li><a class="nav-link" href="{{url('/home/petugas')}}">Data Petugas</a></li>
+                <li><a class="nav-link" href="{{url('/home/provinsi')}}">Data Provinsi</a></li>
+                <li><a class="nav-link" href="{{url('/home/kabupaten')}}">Data Kabupaten</a></li>
+                <li><a class="nav-link" href="{{url('/home/kecamatan')}}">Data Kecamatan</a></li>
+                <li><a class="nav-link" href="{{url('/home/penduduk')}}">Data Penduduk</a></li>
+                <li><a class="nav-link" href="{{url('/home/kebutuhan')}}">Data Kebutuhan</a></li>
+                  <li><a class="nav-link" href="{{url('/home/pekerjaan')}}">Data Pekerjaan</a></li>
                 </ul>
               </li>
-               
+              <li class="menu-header">Layanan Pengaduan</li>
+              <li class="nav-item">
+              <a href="{{url('/aspirasi/list')}}"><i class="fas fa-exclamation"></i>Daftar Aspirasi Masyarakat</a>
+              </li>
               <li class="menu-header">Konten</li>
               <li class="nav-item dropdown">
                 <a href="#" class="nav-link"><i class="fas fa-th-large"></i> <span>Artikel / Konten</span></a>
@@ -93,17 +99,16 @@
                 <a href="#" class="nav-link has-dropdown"><i class="far fa-user"></i> <span>Manage</span></a>
                 <ul class="dropdown-menu">
                   <li><a href="">Informasi Utama Website</a></li>
-                 
-                  <li><a href="">Sosial Media Web</a></li>
                 </ul>
               </li>
               <li class="nav-item dropdown">
                 <a href="#" class="nav-link"><i class="fas fa-exclamation"></i> <span>Menu Managemen</span></a>
               </li>
+            
               
               
             <div class="mt-4 mb-4 p-3 hide-sidebar-mini">
-              <a href="https://getstisla.com/docs" class="btn btn-primary btn-lg btn-block btn-icon-split">
+            <a href="{{url('/auth/logout')}}" class="btn btn-primary btn-lg btn-block btn-icon-split">
                 <i class="fas fa-logout"></i> Logout
               </a>
             </div>
@@ -133,7 +138,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
   <script src="{{asset('BackEnd/assets/js/stisla.js')}}"></script>
 
-
+  <script src="{{asset('BackEnd/assets/js/sweetalert2.all.min.js')}}"></script>
   <!-- Template JS File -->
   <script src="{{asset('BackEnd/assets/js/scripts.js')}}"></script>
   <script src="{{asset('BackEnd/assets/js/custom.js')}}"></script>

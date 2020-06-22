@@ -44,7 +44,17 @@ return [
         'api' => [
             'driver' => 'token',
             'provider' => 'users',
-            'hash' => false,
+            'hash' => true,
+        ],
+        'users' => [
+            'driver' => 'session',
+            'provider' => 'users',
+        ],
+
+        'users-api' => [
+            'driver' => 'token',
+            'provider' => 'users',
+            'hash' => true,
         ],
     ],
 
