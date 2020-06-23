@@ -3,19 +3,14 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\pekerjaan;
+use App\User;
 use DataTables;
-class JobController extends Controller
+class UserController extends Controller
 {
-    public function index()
+    public function getpetugas(Request $request)
     {
-        return view('BackEnd.Penduduk.P_Pekerjaan');
-    }
-    public function getpekerjaan(Request $request)
-    {
-        
         if($request->ajax()){
-            $data = pekerjaan::all();
+            $data = User::all();
             return DataTables::of($data)
             ->addColumn('action', function($data){
                 $btn = '<a href="" class="btn btn-primary"><i class="fas fa-edit"></i></a><a href="" class="btn btn-danger ml-2"><i class="fas fa-trash"></i></a>';

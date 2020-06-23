@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
+  <meta name="csrf-token" content="{{ csrf_token() }}" />
   <title>Ecommerce Dashboard &mdash; Stisla</title>
 
   <!-- General CSS Files -->
@@ -10,12 +11,14 @@
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
   <!-- <link rel="stylesheet" href="../assets/css/font-awesome.css"> -->
   <!-- CSS Libraries -->
+  <link rel="stylesheet" href="{{asset('BackEnd/assets/css/datatables.min.css')}}">
   {{-- <link rel="stylesheet" href="../node_modules/jqvmap/dist/jqvmap.min.css">
   <link rel="stylesheet" href="../node_modules/summernote/dist/summernote-bs4.css">
   <link rel="stylesheet" href="../node_modules/owl.carousel/dist/assets/owl.carousel.min.css">
   <link rel="stylesheet" href="../node_modules/owl.carousel/dist/assets/owl.theme.default.min.css"> --}}
 
   <!-- Template CSS -->
+<link rel="stylesheet" href="{{asset('BackEnd/assets/css/select2.min.css')}}">
     <!-- General CSS Files -->
 <link rel="stylesheet" href="{{asset('BackEnd/assets/css/bootstrap.min.css')}}">
 <link rel="stylesheet" href="{{asset('BackEnd/assets/css/all.css')}}">
@@ -45,7 +48,7 @@
                 <i class="far fa-user"></i> Profile
               </a>
               <div class="dropdown-divider"></div>
-              <a href="#" class="dropdown-item has-icon text-danger">
+              <a href="{{url('/auth/logout')}}" class="dropdown-item has-icon text-danger">
                 <i class="fas fa-sign-out-alt"></i> Logout
               </a>
             </div>
@@ -84,7 +87,7 @@
               </li>
               <li class="menu-header">Konten</li>
               <li class="nav-item dropdown">
-                <a href="#" class="nav-link"><i class="fas fa-th-large"></i> <span>Artikel / Konten</span></a>
+               <a href="{{url('/konten/list')}}" class="nav-link"><i class="fas fa-th-large"></i> <span>Artikel / Konten</span></a>
               </li>
               <li class="nav-item dropdown">
                 <a href="#" class="nav-link has-dropdown"><i class="far fa-file-alt"></i> <span>Laporan</span></a>
@@ -96,9 +99,9 @@
               </li>
               <li class="menu-header">Pengaturan Website</li>
               <li class="nav-item dropdown">
-                <a href="#" class="nav-link has-dropdown"><i class="far fa-user"></i> <span>Manage</span></a>
+              <a href="#" class="nav-link has-dropdown"><i class="far fa-user"></i> <span>Manage</span></a>
                 <ul class="dropdown-menu">
-                  <li><a href="">Informasi Utama Website</a></li>
+                  <li><a href="{{url('/home/about')}}">Informasi Utama Website</a></li>
                 </ul>
               </li>
               <li class="nav-item dropdown">
@@ -142,8 +145,20 @@
   <!-- Template JS File -->
   <script src="{{asset('BackEnd/assets/js/scripts.js')}}"></script>
   <script src="{{asset('BackEnd/assets/js/custom.js')}}"></script>
-
+  <script src="{{asset('BackEnd/assets/js/jquery.tinymce.min.js')}}"></script>
+  <script src="{{asset('BackEnd/assets/js/tinymce.min.js')}}"></script>
+<script src="{{asset('BackEnd/assets/js/datatables.min.js')}}"></script>
+  
+  <script>
+    tinymce.init({
+      selector: '#konten',
+      height: 800
+    });
+  </script>
+  <script src="{{asset('BackEnd/assets/js/fetchdata.js')}}"></script>
   <!-- Page Specific JS File -->
   <script src="{{asset('BackEnd/assets/js/page/index.js')}}"></script>
+  <script src="{{asset('BackEnd/assets/js/select2.min.js')}}"></script>
+  <script src="{{asset('BackEnd/assets/js/action.js')}}"></script>
 </body>
 </html>

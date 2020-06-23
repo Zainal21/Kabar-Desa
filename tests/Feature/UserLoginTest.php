@@ -19,4 +19,10 @@ class UserLoginTest extends TestCase
 
         $response->assertStatus(200);
     }
+    public function UserLogin()
+    {
+        $response = $this->get('/auth/login');
+
+        $response->assertStatus(200);
+    }
 }

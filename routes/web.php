@@ -33,9 +33,17 @@ Route::get('/auth/logout', 'AuthController@logout');
 // Admin Manage
 Route::get('/home/admin', 'DashboardController@index');
 
+Route::get('/home/about', 'AboutController@index');
+
+Route::get('/home/about', 'AboutController@index');
+
+Route::post('/home/tentang/update/{id}', 'AboutController@update');
+
 
 // petugas
 Route::get('/home/petugas', 'DashboardController@petugas');
+
+Route::get('/home/petugas/list', 'UserController@getPetugas');
 
 // alamat
 Route::get('/home/provinsi', 'AlamatController@provinsi');
@@ -51,7 +59,19 @@ Route::get('/home/kebutuhan', 'PendudukController@kebutuhan');
 
 Route::get('/home/pekerjaan', 'JobController@index');
 
+Route::get('/home/list/pekerjaan', 'JobController@getpekerjaan');
+
+
+
+
+
 Route::get('/aspirasi/list', 'AspirasiController@index');
+
+Route::get('/konten/list', 'KontenController@index');
+
+Route::get('/konten/add', 'KontenController@create');
+
+Route::post('/konten/add', 'KontenController@store');
 
 
 
