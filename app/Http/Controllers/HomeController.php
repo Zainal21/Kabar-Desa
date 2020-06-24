@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Konten;
 class HomeController extends Controller
 {
     public function index()
@@ -27,13 +27,20 @@ class HomeController extends Controller
         return view('FrontEnd.Penduduk.v_penduduk');
     }
 
-    public function kabardesa()
+    public function kabarDesa()
     {
-        return view('FrontEnd.v_kabar_desa');
+        $data = [
+            'kabardesa' => Konten::where(['kategori' => 'Kabar Desa'])->get()
+        ];
+        return view('FrontEnd.v_kabar_desa',$data);
     }
     public function artikel()
     {
-        return view('FrontEnd.v_artikel');
+        $data = [
+            'konten' => Konten::where(['kategori' => 'Artikel'])
+                        ->where(['status' => 'Publish'])->get()
+        ];
+        return view('FrontEnd.v_artikel',$data);
     }
 
     // informasi website

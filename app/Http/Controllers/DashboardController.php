@@ -30,7 +30,7 @@ class DashboardController extends Controller
                     ->get();
                 return DataTables::of($data)
                 ->addColumn('action', function(){
-                    $btn = '<a href="" class="badge badge-primary"><i class="fas fa-edit"></i></a><a href="" class="badge badge-danger ml-2 d-inline"><i class="fas fa-trash"></i></a>';
+                    $btn = '<a href="" class="btn btn-sm btn-outline-primary"><i class="fas fa-edit"></i></a><a href="" class="btn btn-sm  btn-outline-danger ml-2 d-inline"><i class="fas fa-trash"></i></a>';
                     return $btn;
                 })->rawColumns(['action'])
                 ->make(true);

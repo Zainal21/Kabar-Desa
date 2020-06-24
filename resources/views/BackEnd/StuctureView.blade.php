@@ -78,7 +78,8 @@
                 <li><a class="nav-link" href="{{url('/home/kecamatan')}}">Data Kecamatan</a></li>
                 <li><a class="nav-link" href="{{url('/home/penduduk')}}">Data Penduduk</a></li>
                 <li><a class="nav-link" href="{{url('/home/kebutuhan')}}">Data Kebutuhan</a></li>
-                  <li><a class="nav-link" href="{{url('/home/pekerjaan')}}">Data Pekerjaan</a></li>
+                <li><a class="nav-link" href="{{url('/home/pekerjaan')}}">Data Pekerjaan</a></li>
+                <li><a class="nav-link" href="{{url('/home/pekerjaan')}}">Data User</a></li>
                 </ul>
               </li>
               <li class="menu-header">Layanan Pengaduan</li>
@@ -148,7 +149,6 @@
   <script src="{{asset('BackEnd/assets/js/jquery.tinymce.min.js')}}"></script>
   <script src="{{asset('BackEnd/assets/js/tinymce.min.js')}}"></script>
 <script src="{{asset('BackEnd/assets/js/datatables.min.js')}}"></script>
-  
   <script>
     tinymce.init({
       selector: '#konten',

@@ -16,34 +16,18 @@
     <div class="card-body">
     <a href="{{url('/konten/add')}}" class="btn btn-primary float-right"> <i class="fas fa-plus"></i> Tambah</a>
          <div class="table-responsive">
-          <table class="table table-hover">
+          <table class="table table-hover" id="tbl_konten" width="100%">
             <thead>
               <tr>
-                <th scope="col">#</th>
-                <th scope="col">First</th>
-                <th scope="col">Last</th>
-                <th scope="col">Handle</th>
+                <th scope="col">Judul</th>
+                <th scope="col">Author</th>
+                <th scope="col">Status</th>
+                <th scope="col">kategori</th>
+                <th scope="col">Action</th>
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <th scope="row">1</th>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>@mdo</td>
-              </tr>
-              <tr>
-                <th scope="row">2</th>
-                <td>Jacob</td>
-                <td>Thornton</td>
-                <td>@fat</td>
-              </tr>
-              <tr>
-                <th scope="row">3</th>
-                <td>Larry</td>
-                <td>the Bird</td>
-                <td>@twitter</td>
-              </tr>
+             
             </tbody>
           </table>
       </div>

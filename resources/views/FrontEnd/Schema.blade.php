@@ -11,6 +11,8 @@
   <link rel="stylesheet" href="{{asset('BackEnd/assets/css/bootstrap.min.css')}}">
   <!-- <link rel="stylesheet" href="../assets/css/font-awesome.css"> -->
   <!-- CSS Libraries -->
+
+  <link rel="stylesheet" href="{{asset('BackEnd/assets/css/datatables.min.css')}}">
   <link rel="stylesheet" href="../node_modules/jqvmap/dist/jqvmap.min.css">
   <link rel="stylesheet" href="../node_modules/summernote/dist/summernote-bs4.css">
   <link rel="stylesheet" href="../node_modules/owl.carousel/dist/assets/owl.carousel.min.css">
@@ -109,7 +111,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.nicescroll/3.7.6/jquery.nicescroll.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
   <script src="{{asset('BackEnd/assets/js/stisla.js')}}"></script>
-
+  <script src="{{asset('BackEnd/assets/js/datatables.min.js')}}"></script>
 
   <!-- Template JS File -->
   <script src="{{asset('BackEnd/assets/js/scripts.js')}}"></script>
@@ -117,6 +119,7 @@
 
   <!-- Page Specific JS File -->
   <script src="{{asset('BackEnd/assets/js/page/index.js')}}"></script>
+  <script src="{{asset('BackEnd/assets/js/front.js')}}"></script>
   
 </body>
 </html>

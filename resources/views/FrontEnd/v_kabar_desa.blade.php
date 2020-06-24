@@ -10,22 +10,38 @@
     
         </div>
       </div>
+  
+       
       <div class="row">
         <div class="col-12 col-sm-6 col-md-6 col-lg-3">
           <article class="article shadow">
-           
-            <div class="article-details">
-              <div class="article-user-details">
-                <div class="user-detail-name">
-                  <img alt="image" src="../assets/img/avatar/avatar-2.png">
-                  <a href="#">Irwansyah Saputra</a>
+        
+            @foreach ($kabardesa as $item)
+            @if (!$item)
+            <div class="row">
+              <div class="col">
+                <div class="alert alert-danger" role="alert">
+                  Data Kabar Desa tidak tersedia
                 </div>
-                <div class="text-job">Admin</div>
-              </div>
-                <a href="#" class="btn btn-primary">Read More</a>
               </div>
             </div>
+            @endif
+              <article class="article shadow">
+                
+                <div class="card" style="width: 18rem;">
+                  <img class="card-img-top" src="{{asset('BackEnd/assets/img/avatar/avatar-2.png')}}" alt="Card image cap">
+                  <div class="card-body">
+                  <h5 class="card-title text-bold">{{$item->judul}}</h5>
+                    <p class="card-text text-bold">{{$item->author}}. <span style="float: right"> {{$item->created_at->format('Y n D')}}.</span></p>
+                 
+                  <a href="{{url('/news/artikel-desa/detail/'.$item->slug)}}" class="btn btn-primary">Detail</a>
+                  </div>
+                </div>
+              </article>
+              
+            @endforeach
           </article>
+          
         </div>
       </div>
     </section>

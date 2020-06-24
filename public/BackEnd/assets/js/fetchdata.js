@@ -77,6 +77,7 @@ $(document).ready(function(){
     $('#tbl_penduduk').DataTable({
       processing:true,
       serverSide:true,
+   
       ajax:{
         url:"/home/penduduk/list",
         method:"GET",
@@ -91,11 +92,63 @@ $(document).ready(function(){
         {data:'agama',name:'agama'},
         {data:'alamat',name:'alamat'},
         {data:'action',name:'action', orderable:false},
-      ]
+      ],
+    
+    })
+    $('#tbl_kebutuhan').DataTable({
+      processing:true,
+      serverSide:true,
+   
+      ajax:{
+        url:"/home/kebutuhan/list",
+        method:"GET",
+      },
+      columns:[
+        {data:'nama_kebutuhan',name:'nama_kebutuhan'},
+        {data:'jumlah',name:'jumlah'},
+        {data:'nama_kabupaten',name:'nama_kabupaten'},
+        {data:'action',name:'action', orderable:false},
+      ],
+    
+    })
+    $('#tbl_konten').DataTable({
+      processing:true,
+      serverSide:true,
+   
+      ajax:{
+        url:"/home/konten/list",
+        method:"GET",
+      },
+      columns:[
+        {data:'judul',name:'judul'},
+        {data:'author',name:'author'},
+        {data:'kategori',name:'kategori'},
+        {data:'status',name:'status'},
+        {data:'action',name:'action', orderable:false},
+      ],
+    
     })
 
 
-
+    $('#tbl_penduduk2').DataTable({
+      processing:true,
+      serverSide:true,
+   
+      ajax:{
+        url:"/home/penduduk/list",
+        method:"GET",
+      },
+      columns:[
+        {data:'NIK',name:'NIK'},
+        {data:'Nama_penduduk',name:'Nama_penduduk'},
+        {data:'tanggal_lahir',name:'tanggal_lahir'},
+        {data:'nama_pekerjaan',name:'nama_pekerjaan'},
+        {data:'jenis_kelamin',name:'jenis_kelamin'},
+        {data:'Status_Kawin',name:'Status_Kawin'},
+        {data:'agama',name:'agama'},
+        {data:'alamat',name:'alamat'},
+      ],
+    })
 
 
  })
