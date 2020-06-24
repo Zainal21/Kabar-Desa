@@ -48,12 +48,24 @@ Route::get('/home/petugas/list', 'UserController@getPetugas');
 // alamat
 Route::get('/home/provinsi', 'AlamatController@provinsi');
 
+Route::get('/home/provinsi/list', 'AlamatController@getprovinsi');
+
+
+
 Route::get('/home/kabupaten', 'AlamatController@kabupaten');
+
+Route::get('/home/kabupaten/list', 'AlamatController@getkabupaten');
+
+
 
 Route::get('/home/kecamatan', 'AlamatController@kecamatan');
 
+Route::get('/home/kecamatan/list', 'AlamatController@getkecamatan');
+
 // penduduk master
 Route::get('/home/penduduk', 'DashboardController@penduduk');
+
+Route::get('/home/penduduk/list', 'DashboardController@getPenduduk');
 
 Route::get('/home/kebutuhan', 'PendudukController@kebutuhan');
 

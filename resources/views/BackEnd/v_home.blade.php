@@ -6,7 +6,7 @@
     <div class="col-lg-4 col-md-4 col-sm-12">
       <div class="card card-statistic-2">
         <div class="card-stats">
-          <div class="card-stats-title">Statistic
+          <div class="card-stats-title">Statistik
            
           </div>
           <div class="card-stats-items">
@@ -86,57 +86,28 @@
           <div class="table-responsive table-invoice">
             <table class="table table-striped">
               <tr>
-                <th>Invoice ID</th>
-                <th>Customer</th>
-                <th>Status</th>
-                <th>Due Date</th>
+                <th>NPWP Pemilik</th>
+                <th>Nama UMKM</th>
+                <th>Email</th>
+                <th>Pemilik</th>
+                <th>Modal Dasar</th>
+                <th>Modal Ditempatkan</th>
+                <th>Alamat</th>
                 <th>Action</th>
               </tr>
               <tr>
-                <td><a href="#">INV-87239</a></td>
-                <td class="font-weight-600">Kusnadi</td>
-                <td><div class="badge badge-warning">Unpaid</div></td>
-                <td>July 19, 2018</td>
+                <td><a href="#">19.012.829.2-01.331</a></td>
+                <td class="font-weight-600">UMKM ZAIN SHOP</td>
+                <td><div class="badge badge-warning">Muhamad Zainal Arifin</div></td>
+                <td>PenulisDuduk@gmail.com</td>
+                <td>24.000/000</td>
+                <td>20.000.000</td>
+                <td>Sidorejo, Kaliboto, Mojogedang, Karanganyar</td>
                 <td>
                   <a href="#" class="btn btn-primary">Detail</a>
                 </td>
               </tr>
-              <tr>
-                <td><a href="#">INV-48574</a></td>
-                <td class="font-weight-600">Hasan Basri</td>
-                <td><div class="badge badge-success">Paid</div></td>
-                <td>July 21, 2018</td>
-                <td>
-                  <a href="#" class="btn btn-primary">Detail</a>
-                </td>
-              </tr>
-              <tr>
-                <td><a href="#">INV-76824</a></td>
-                <td class="font-weight-600">Muhamad Nuruzzaki</td>
-                <td><div class="badge badge-warning">Unpaid</div></td>
-                <td>July 22, 2018</td>
-                <td>
-                  <a href="#" class="btn btn-primary">Detail</a>
-                </td>
-              </tr>
-              <tr>
-                <td><a href="#">INV-84990</a></td>
-                <td class="font-weight-600">Agung Ardiansyah</td>
-                <td><div class="badge badge-warning">Unpaid</div></td>
-                <td>July 22, 2018</td>
-                <td>
-                  <a href="#" class="btn btn-primary">Detail</a>
-                </td>
-              </tr>
-              <tr>
-                <td><a href="#">INV-87320</a></td>
-                <td class="font-weight-600">Ardian Rahardiansyah</td>
-                <td><div class="badge badge-success">Paid</div></td>
-                <td>July 28, 2018</td>
-                <td>
-                  <a href="#" class="btn btn-primary">Detail</a>
-                </td>
-              </tr>
+              
             </table>
           </div>
         </div>
@@ -155,35 +126,15 @@
           <div class="tickets-list">
             <a href="#" class="ticket-item">
               <div class="ticket-title">
-                <h4>My order hasn't arrived yet</h4>
+                <h4>Usaha Kecil Menengah Sedang dalam Proses Penyesuaian diera new Normal</h4>
               </div>
               <div class="ticket-info">
-                <div>Laila Tazkiah</div>
+                <div></div>
                 <div class="bullet"></div>
                 <div class="text-primary">1 min ago</div>
               </div>
             </a>
-            <a href="#" class="ticket-item">
-              <div class="ticket-title">
-                <h4>Please cancel my order</h4>
-              </div>
-              <div class="ticket-info">
-                <div>Rizal Fakhri</div>
-                <div class="bullet"></div>
-                <div>2 hours ago</div>
-              </div>
-            </a>
-            <a href="#" class="ticket-item">
-              <div class="ticket-title">
-                <h4>Do you see my mother?</h4>
-              </div>
-              <div class="ticket-info">
-                <div>Syahdan Ubaidillah</div>
-                <div class="bullet"></div>
-                <div>6 hours ago</div>
-              </div>
-            </a>
-            
+         
           </div>
         </div>
       </div>
