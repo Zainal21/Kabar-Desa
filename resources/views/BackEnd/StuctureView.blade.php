@@ -19,6 +19,7 @@
 
   <!-- Template CSS -->
 <link rel="stylesheet" href="{{asset('BackEnd/assets/css/select2.min.css')}}">
+
     <!-- General CSS Files -->
 <link rel="stylesheet" href="{{asset('BackEnd/assets/css/bootstrap.min.css')}}">
 <link rel="stylesheet" href="{{asset('BackEnd/assets/css/all.css')}}">

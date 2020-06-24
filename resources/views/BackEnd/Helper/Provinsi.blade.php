@@ -12,6 +12,9 @@
   <div class="card">
     <div class="card-header">
       <h4>Data Provinsi</h4>
+      <button type="button" class="btn btn-outline-primary ml-auto" data-toggle="modal" data-target="#FModalProvinsi">
+        <i class="fas fa-plus"></i> Tambah Item
+      </button>
     </div>
 
     <div class="card-body">
@@ -29,4 +32,27 @@
       </div>
     </div>
 </section>
+<div class="modal fade" id="FModalProvinsi" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Tambah Data</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+       <form action="" method="post" id="FactionProvinsi">
+         <label for="">Nama Provinsi</label>
+         <input type="text" name="nama_provinsi" id="" class="form-control">
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+          <input type="submit" class="btn btn-primary" id="btn-provinsi" value="Tambah">
+        </div>
+       </form>
+      </div>
+      
+    </div>
+  </div>
+</div>
 @endsection

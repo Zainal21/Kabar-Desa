@@ -21,13 +21,15 @@ Route::get('/en/Data-Kebutuhan-desa', 'HomeController@kebutuhan');
 Route::get('/en/Data-Pekerjaan-desa', 'HomeController@pekerjaan');
 
 Route::get('/en/Data-umkm-desa', 'HomeController@umkm');
+
 Route::get('/en/Data-penduduk-desa', 'HomeController@penduduk');
 
 Route::get('/news/kabar-desa', 'HomeController@kabardesa');
 
+Route::get('/news/artikel-desa/detail/{slug}', 'HomeController@detailkabar');
+
 Route::get('/news/artikel-desa', 'HomeController@artikel');
 
-Route::get('/news/artikel-desa/detail/{slug}', 'HomeController@detailArtikel');
 
 Route::get('/about/informasi-web-desa', 'HomeController@informasi');
 
@@ -53,10 +55,14 @@ Route::post('/home/tentang/update/{id}', 'AboutController@update');
 // petugas
 Route::get('/home/petugas', 'DashboardController@petugas');
 
+Route::post('/home/petugas/add', 'UserController@store');
+
 Route::get('/home/petugas/list', 'UserController@getPetugas');
 
 // alamat
 Route::get('/home/provinsi', 'AlamatController@provinsi');
+
+Route::post('/home/provinsi', 'AlamatController@provinsistore');
 
 Route::get('/home/provinsi/list', 'AlamatController@getprovinsi');
 

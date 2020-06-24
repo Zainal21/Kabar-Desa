@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use DataTables;
 use App\provinsi;
 use Illuminate\Support\Facades\DB;
+use Validator;
 class AlamatController extends Controller
 {
     public function provinsi()
@@ -61,6 +62,18 @@ class AlamatController extends Controller
                 $btn = '<a href="" class="btn btn-outline-primary"><i class="fas fa-edit"></i></a><a href="" class="btn btn-outline-danger ml-2"><i class="fas fa-trash"></i></a>';
                 return $btn;
             })->rawColumns(['action'])->make(true);
+        }
+    }
+    public function provinsistore(Request $request)
+    {
+        $error = Validator::make($request->all(),['nama_provinsi' =>'required']);
+        if($error->fails()){
+            return response()->json(['error' => $error->errors()->all()]);
+        }else{
+            provinsi::create([
+                'nama_provinsi' => $request->nama_provinsi
+            ]);
+            return response()->json(['success' => 'Data Provinsi berhasil ditambahkan ke database']);
         }
     }
 }

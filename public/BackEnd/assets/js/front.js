@@ -1,4 +1,5 @@
 $(document).ready(function(){
+  $('#OP_User').select2();
   $('#tbl_penduduk2').DataTable({
     processing:true,
     serverSide:true,

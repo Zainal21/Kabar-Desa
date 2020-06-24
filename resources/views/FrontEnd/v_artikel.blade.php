@@ -28,7 +28,7 @@
             <div class="alert alert-danger" role="alert">
               Data Kabar Desa tidak tersedia
             </div>
-          </div>
+        </div>
         </div>
         @endif
         <div class="col-12 col-sm-6 col-md-6 col-lg-3">

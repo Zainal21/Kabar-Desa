@@ -11,7 +11,7 @@
   <link rel="stylesheet" href="{{asset('BackEnd/assets/css/bootstrap.min.css')}}">
   <!-- <link rel="stylesheet" href="../assets/css/font-awesome.css"> -->
   <!-- CSS Libraries -->
-
+  <link rel="stylesheet" href="{{asset('BackEnd/assets/css/select2.min.css')}}">
   <link rel="stylesheet" href="{{asset('BackEnd/assets/css/datatables.min.css')}}">
   <link rel="stylesheet" href="../node_modules/jqvmap/dist/jqvmap.min.css">
   <link rel="stylesheet" href="../node_modules/summernote/dist/summernote-bs4.css">
@@ -118,6 +118,9 @@
   <script src="{{asset('BackEnd/assets/js/custom.js')}}"></script>
 
   <!-- Page Specific JS File -->
+  
+
+  <script src="{{asset('BackEnd/assets/js/select2.min.js')}}"></script>
   <script src="{{asset('BackEnd/assets/js/page/index.js')}}"></script>
   <script src="{{asset('BackEnd/assets/js/front.js')}}"></script>
   

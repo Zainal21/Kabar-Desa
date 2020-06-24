@@ -65,6 +65,32 @@ function FUpdateData(url,data,to){
   })
 }
 
+function SaveData(url,data,to)
+{
+  $.ajax({
+    url:url,
+    data:data,
+    method:"POST",
+    success:function(data){
+      if(data.error){
+        Swal({
+          title:'Kesalahan Input Data',
+          text:data.error,
+          type:'error'
+        })
+      }else{
+        Swal({
+          title:data.success,
+          text:'Berhasil',
+          type:'success'
+        }).then(function(){
+          window.location.href =to;
+        })
+      }
+    }
+  })
+}
+
 
 // action CRUD
 // konten
@@ -84,6 +110,21 @@ function FUpdateData(url,data,to){
       FUpdateData('/home/tentang/update/1',$(this).serialize(),"/home/about")
      }
   });
+
+  // petugas
+
+  $('#FactionPetugas').on('submit', function(e){
+    e.preventDefault();
+    if($('#btn-petugas').val() == "Tambah"){
+      SaveData("/home/petugas/add",$(this).serialize(),"/home/petugas")
+    }
+  })
+  $('#FactionProvinsi').on('submit', function(e){
+    e.preventDefault();
+    if($('#btn-provinsi').val() == "Tambah"){
+      SaveData("/home/provinsi",$(this).serialize(),"/home/provinsi")
+    }
+  })
 
 });
 

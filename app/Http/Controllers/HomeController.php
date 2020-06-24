@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Konten;
+use App\tentang;
 class HomeController extends Controller
 {
     public function index()
@@ -34,6 +35,13 @@ class HomeController extends Controller
         ];
         return view('FrontEnd.v_kabar_desa',$data);
     }
+    public function detailkabar($slug)
+    {
+        $data = [
+            'Konten' => Konten::where(['slug' => $slug])->first()
+        ];
+        return view('FrontEnd.v_detail_artikel',$data);
+    }
     public function artikel()
     {
         $data = [
@@ -46,7 +54,11 @@ class HomeController extends Controller
     // informasi website
     public function informasi()
     {
-        return view('FrontEnd.Info_website.v_info_utama');
+
+        $data = [
+            'about' => Tentang::where(['id' =>1])->first()
+        ];
+        return view('FrontEnd.Info_website.v_info_utama',$data);
     }
 
     // sosial media
