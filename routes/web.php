@@ -59,6 +59,9 @@ Route::post('/home/petugas/add', 'UserController@store');
 
 Route::get('/home/petugas/list', 'UserController@getPetugas');
 
+Route::get('/home/petugas/delete/{id}', 'UserController@destroy');
+
+
 // alamat
 Route::get('/home/provinsi', 'AlamatController@provinsi');
 
@@ -70,13 +73,13 @@ Route::get('/home/provinsi/list', 'AlamatController@getprovinsi');
 
 Route::get('/home/kabupaten', 'AlamatController@kabupaten');
 
+Route::post('/home/kabupaten/add', 'AlamatController@kabupatenstore');
+
 Route::get('/home/kabupaten/list', 'AlamatController@getkabupaten');
 
+Route::get('/home/kabupaten/delete/{id}', 'AlamatController@kabupatendelete');
 
 
-Route::get('/home/kecamatan', 'AlamatController@kecamatan');
-
-Route::get('/home/kecamatan/list', 'AlamatController@getkecamatan');
 
 // penduduk master
 Route::get('/home/penduduk', 'DashboardController@penduduk');
@@ -87,12 +90,18 @@ Route::get('/home/kebutuhan', 'PendudukController@kebutuhan');
 
 Route::get('/home/kebutuhan/list', 'PendudukController@getkebutuhan');
 
+Route::post('/home/kebutuhan/add', 'PendudukController@savekebutuhan');
+
+Route::get('/home/kebutuhan/delete/{id}', 'PendudukController@deletekebutuhan');
 
 
 Route::get('/home/pekerjaan', 'JobController@index');
 
+Route::post('/home/pekerjaan/add', 'JobController@store');
+
 Route::get('/home/list/pekerjaan', 'JobController@getpekerjaan');
 
+Route::get('/home/pekerjaan/delete/{id}', 'JobController@destroy');
 
 
 

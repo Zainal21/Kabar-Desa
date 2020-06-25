@@ -1,7 +1,8 @@
 $(document).ready(function(){
   $('#kategori').select2();
   $('#status').select2();
-
+  $('#op_kab').select2();
+ 
 
 
   // datatable

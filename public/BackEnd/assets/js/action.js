@@ -52,8 +52,8 @@ function FUpdateData(url,data,to){
         })
       }else{
         Swal({
-          title:data.success,
-          text:'Berhasil',
+          title:'Berhasil!',
+          text:data.success,
           type:'success'
         }).then(function(){
           window.location.href =to;
@@ -80,14 +80,44 @@ function SaveData(url,data,to)
         })
       }else{
         Swal({
-          title:data.success,
-          text:'Berhasil',
+          title:'Berhasil!',
+          text:data.success,
           type:'success'
         }).then(function(){
           window.location.href =to;
         })
       }
     }
+  })
+}
+
+function deleteData(url,to)
+{
+    Swal({
+      title:'Apakah Anda Yakin?',
+      text:'Data ini akan dihapus',
+      type:'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#308',
+      cancelButtonColor:'$d33',
+      confirmButtonText:'hapus Data'
+    }).then((result)=>{
+      if(result.value){
+       
+        $.ajax({
+          url:url,
+          method:"GET",
+          success:function(data){
+            Swal({
+              title:'Berhasil',
+              text:data.success,
+              type:'success'
+            }).then(function(){
+              window.location.href =to;
+            })
+          }
+        })
+      }
   })
 }
 
@@ -111,7 +141,7 @@ function SaveData(url,data,to)
      }
   });
 
-  // petugas
+  // user
 
   $('#FactionPetugas').on('submit', function(e){
     e.preventDefault();
@@ -126,6 +156,65 @@ function SaveData(url,data,to)
     }
   })
 
-});
+  $(document).on('click','.btn-user-delete', function(e){
+    e.preventDefault();
+    var id = $(this).attr('id')
+    url = "/home/petugas/delete/" + id;
+    deleteData(url, "/home/petugas")
+  })
 
+
+
+
+
+
+  // kabupaten
+  $('#FactionKabupaten').on('submit', function(e){
+    e.preventDefault();
+    if($('#btn-kabupaten').val() == "Tambah"){
+      SaveData("/home/kabupaten/add", $(this).serialize(),"/home/kabupaten")
+    }
+  });
+  $(document).on('click', '.btn-kabupaten-delete', function(e){
+    e.preventDefault();
+    var id = $(this).attr('id')
+    url = "/home/kabupaten/delete/" + id;
+    deleteData(url, "/home/kabupaten")
+  })
+
+
+
+
+
+  // kebutuhan
+  
+  $('#FactionKebutuhan').on('submit', function(e){
+    e.preventDefault();
+    if($('#btn-kebutuhan').val() == "Tambah"){
+      SaveData("/home/kebutuhan/add", $(this).serialize(),"/home/kebutuhan")
+    }
+  });
+  $(document).on('click', '.btn-kebutuhan-delete', function(e){
+    e.preventDefault();
+    var id = $(this).attr('id')
+    url = "/home/kebutuhan/delete/" + id;
+    deleteData(url, "/home/kebutuhan")
+  })
+
+
+
+  // pekerjaan
+  $('#FactionPekerjaan').on('submit', function(e){
+    e.preventDefault();
+    if($('#btn-pekerjaan').val() == "Tambah"){
+      SaveData("/home/pekerjaan/add", $(this).serialize(),"/home/pekerjaan")
+    }
+  });
+  $(document).on('click', '.btn-pekerjaan-delete', function(e){
+    e.preventDefault();
+    var id = $(this).attr('id')
+    url = "/home/pekerjaan/delete/" + id;
+    deleteData(url, "/home/pekerjaan")
+  })
+})
 

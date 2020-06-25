@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use DataTables;
 use App\provinsi;
+use App\kabupaten;
 use Illuminate\Support\Facades\DB;
 use Validator;
 class AlamatController extends Controller
@@ -29,7 +30,26 @@ class AlamatController extends Controller
 
     public function kabupaten()
     {
-        return view('BackEnd.Helper.Kabupaten');
+        $data = [
+          'provinsi' =>  provinsi::all()
+        ];
+        return view('BackEnd.Helper.Kabupaten',$data);
+    }
+    public function kabupatenstore(Request $request)
+    {
+        $error = Validator::make($request->all(),[
+            'nama_kabupaten' => 'required',
+            'provinsi_id' => 'required',
+        ]);
+        if($error->fails()){
+            return response()->json(['error' => $error->errors()->all()]);
+        }else{
+            kabupaten::create([
+                'nama_kabupaten' => $request->nama_kabupaten,
+                'provinsi_id' => $request->provinsi_id
+            ]);
+            return response()->json(['success' => 'Data Kabupaten berhasil ditambahkan ke databse']);
+        }
     }
     public function getkabupaten(Request $request)
     {
@@ -39,31 +59,19 @@ class AlamatController extends Controller
                         ->select('kabupaten.*','provinsi.nama_provinsi')
                         ->get();
             return DataTables::of($data)
-            ->addColumn('action', function(){
-                $btn = '<a href="" class="btn btn-outline-primary"><i class="fas fa-edit"></i></a><a href="" class="btn btn-outline-danger ml-2"><i class="fas fa-trash"></i></a>';
+            ->addColumn('action', function($data){
+                $btn = '<a href="" class="btn btn-outline-primary"><i class="fas fa-edit"></i></a><a href="/home/kabupaten/delete/'.$data->id.'" class="btn btn-outline-danger  btn-kabupaten-delete ml-2" id="'.$data->id.'"><i class="fas fa-trash"></i></a>';
                 return $btn;
             })->rawColumns(['action'])->make(true);
         }
     }
 
-    public function kecamatan()
+    public function kabupatendelete($id)
     {
-        return view('BackEnd.Helper.Kecamatan');
+        kabupaten::destroy($id);
+        return response()->json(['success' => 'Data kabupaten berhasil dihapus dari database']);
     }
-    public function getkecamatan(Request $request)
-    {
-        if($request->ajax()){
-            $data = DB::table('kecamatan')
-                        ->join('kabupaten', 'kabupaten.id', '=', 'kecamatan.kabupaten_id')
-                        ->select('kecamatan.*','kabupaten.nama_kabupaten')
-                        ->get();
-            return DataTables::of($data)
-            ->addColumn('action', function(){
-                $btn = '<a href="" class="btn btn-outline-primary"><i class="fas fa-edit"></i></a><a href="" class="btn btn-outline-danger ml-2"><i class="fas fa-trash"></i></a>';
-                return $btn;
-            })->rawColumns(['action'])->make(true);
-        }
-    }
+   
     public function provinsistore(Request $request)
     {
         $error = Validator::make($request->all(),['nama_provinsi' =>'required']);

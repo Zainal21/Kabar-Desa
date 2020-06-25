@@ -14,7 +14,7 @@ class UserController extends Controller
             $data = User::all();
             return DataTables::of($data)
             ->addColumn('action', function($data){
-                $btn = '<a href="" class="btn btn-outline-primary"><i class="fas fa-edit"></i></a><a href="" class="btn btn-outline-danger ml-2"><i class="fas fa-trash"></i></a>';
+                $btn = '<a href="" class="btn btn-outline-primary"><i class="fas fa-edit"></i></a><a href="/home/petugas/delete/'.$data->id.'" class="btn btn-outline-danger ml-2 btn-user-delete" id="'.$data->id.'"><i class="fas fa-trash"></i></a>';
                 return $btn;
             })->rawColumns(['action'])
             ->make(true);
@@ -38,6 +38,13 @@ class UserController extends Controller
                 'password' => bcrypt($request->password),
                 'role' => $request->role
             ]);
+            return response()->json(['success' => 'Data User Berhasil ditambah ke database']);
         }
+    }
+
+    public function destroy($id)
+    {
+        User::destroy($id);
+        return response()->json(['success' => 'Data User Berhasil dihapus dari database']);
     }
 }

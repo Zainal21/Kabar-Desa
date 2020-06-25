@@ -64,7 +64,7 @@
               <div class="form-group row mb-4">
                 <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Status</label>
                 <div class="col-sm-12 col-md-7">
-                  <select class="form-control selectric" name="status" id="status">
+                  <select class="form-control selectric" name="status" id="status" data-toggle="select">
                     <option>Publish</option>
                     <option>Draft</option>
                     <option>Pending</option>
