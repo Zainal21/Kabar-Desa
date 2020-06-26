@@ -51,6 +51,31 @@ class AlamatController extends Controller
             return response()->json(['success' => 'Data Kabupaten berhasil ditambahkan ke databse']);
         }
     }
+    public function kabupatenedit($id)
+    {   
+        $data = [
+           'kab' => kabupaten::find($id),
+           'prov' => provinsi::all(),
+        ];
+        return view('BackEnd.Helper.v_detail_kabuputen',$data);
+
+    }
+    public function kabupatenupdate(Request $request,$id)
+    {
+        $error = Validator::make($request->all(),[
+            'nama_kabupaten' => 'required',
+            'provinsi_id' => 'required',
+        ]);
+        if($error->fails()){
+            return response()->json(['error' => $error->errors()->all()]);
+        }else{
+            kabupaten::where(['id' => $request->id])->update([
+                'nama_kabupaten' => $request->nama_kabupaten,
+                'provinsi_id' => $request->provinsi_id
+            ]);
+            return response()->json(['success' => 'Data Kabupaten berhasil mengubah ke database']);
+        }
+    }
     public function getkabupaten(Request $request)
     {
         if($request->ajax()){
@@ -60,7 +85,7 @@ class AlamatController extends Controller
                         ->get();
             return DataTables::of($data)
             ->addColumn('action', function($data){
-                $btn = '<a href="" class="btn btn-outline-primary"><i class="fas fa-edit"></i></a><a href="/home/kabupaten/delete/'.$data->id.'" class="btn btn-outline-danger  btn-kabupaten-delete ml-2" id="'.$data->id.'"><i class="fas fa-trash"></i></a>';
+                $btn = '<a href="/home/kabupaten/edit/'.$data->id.'" class="btn btn-outline-primary btn-edit-kabupaten" id="'.$data->id.'"><i class="fas fa-edit"></i></a><a href="/home/kabupaten/delete/'.$data->id.'" class="btn btn-outline-danger  btn-kabupaten-delete ml-2" id="'.$data->id.'"><i class="fas fa-trash"></i></a>';
                 return $btn;
             })->rawColumns(['action'])->make(true);
         }
@@ -84,4 +109,5 @@ class AlamatController extends Controller
             return response()->json(['success' => 'Data Provinsi berhasil ditambahkan ke database']);
         }
     }
+   
 }

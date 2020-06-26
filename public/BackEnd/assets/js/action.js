@@ -25,8 +25,8 @@ function saveImg(url, Fdata,to)
           })
         }else{
           Swal({
-            title:data.success,
-            text:'Berhasil Menambahkan Data ke Database',
+            title:'Berhasil',
+            text:data.success,
             type:'success'
           }).then(function(){
             window.location.href =to;
@@ -131,8 +131,28 @@ function deleteData(url,to)
       var Fdata = new FormData(this);
       saveImg('/konten/add',Fdata,"/konten/list")
     }
-    
   });
+  $('#form-konten-edit').on('submit', function(e){
+    e.preventDefault();
+    
+    if($('#btn-konten').val() == "Ubah Konten"){
+      var Fdata = new FormData(this);
+      var id = $(this).attr('id')
+      saveImg('/konten/update/'+ id,Fdata,"/konten/list")
+    }
+  });
+
+
+ $(document).on('click','.btn-hapus-konten', function(e){
+    e.preventDefault();
+    var id = $(this).attr('id')
+    url = "/konten/delete/" + id;
+    deleteData(url, "/konten/list")
+  })
+
+
+
+
   // about
   $('#form-about').on('submit', function(e){
     e.preventDefault();
@@ -182,8 +202,13 @@ function deleteData(url,to)
     deleteData(url, "/home/kabupaten")
   })
 
-
-
+  $('#FactionKabupaten').on('submit', function(e){
+    e.preventDefault();
+    if($('.btn-kabupaten').val() == "Ubah"){
+      var id = $(this).attr('id')
+      SaveData("/home/kabupaten/update/" + id, $(this).serialize(),"/home/kabupaten")
+    }
+  });
 
 
   // kebutuhan

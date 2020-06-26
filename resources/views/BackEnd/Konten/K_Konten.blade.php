@@ -12,9 +12,9 @@
   <div class="card">
     <div class="card-header">
       <h4>Data Konten</h4>
+      <a href="{{url('/konten/add')}}" class="btn btn-outline-primary ml-auto"> <i class="fas fa-plus"></i> Tambah</a>
     </div>
     <div class="card-body">
-    <a href="{{url('/konten/add')}}" class="btn btn-primary float-right"> <i class="fas fa-plus"></i> Tambah</a>
          <div class="table-responsive">
           <table class="table table-hover" id="tbl_konten" width="100%">
             <thead>

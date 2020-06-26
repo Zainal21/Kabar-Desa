@@ -43,7 +43,7 @@
         <ul class="navbar-nav navbar-right">   
           <li class="dropdown"><a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle nav-link-lg nav-link-user">
           <img alt="image" src="{{asset('BackEnd/assets/img/avatar/avatar-1.png')}}" class="rounded-circle mr-1">
-            <div class="d-sm-none d-lg-inline-block">Hi, Zainal</div></a>
+          <div class="d-sm-none d-lg-inline-block">Halo, {{Auth::user()->name}}</div></a>
             <div class="dropdown-menu dropdown-menu-right">
               <a href="features-profile.html" class="dropdown-item has-icon">
                 <i class="far fa-user"></i> Profile
@@ -105,9 +105,7 @@
                   <li><a href="{{url('/home/about')}}">Informasi Utama Website</a></li>
                 </ul>
               </li>
-              <li class="nav-item dropdown">
-                <a href="#" class="nav-link"><i class="fas fa-exclamation"></i> <span>Menu Managemen</span></a>
-              </li>
+             
             
               
               

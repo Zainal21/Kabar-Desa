@@ -79,6 +79,9 @@ Route::get('/home/kabupaten/list', 'AlamatController@getkabupaten');
 
 Route::get('/home/kabupaten/delete/{id}', 'AlamatController@kabupatendelete');
 
+Route::get('/home/kabupaten/edit/{id}', 'AlamatController@kabupatenedit');
+
+Route::post('/home/kabupaten/update/{id}', 'AlamatController@kabupatenupdate');
 
 
 // penduduk master
@@ -110,11 +113,18 @@ Route::get('/aspirasi/list', 'AspirasiController@index');
 
 Route::get('/home/konten/list', 'KontenController@getKonten');
 
-Route::get('/konten/list', 'KontenController@index');
 
-Route::get('/konten/add', 'KontenController@create');
+  Route::get('/konten/list', 'KontenController@index');
 
-Route::post('/konten/add', 'KontenController@store');
-
-
-
+  Route::get('/konten/add', 'KontenController@create');
+  
+  Route::post('/konten/add', 'KontenController@store');
+  
+  Route::get('/konten/edit/{id}', 'KontenController@edit');
+  
+  Route::post('/konten/update/{id}', 'KontenController@update');
+  
+  Route::get('/konten/delete/{id}', 'KontenController@destroy');
+  
+  
+  
