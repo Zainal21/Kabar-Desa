@@ -1,6 +1,8 @@
 @extends('BackEnd.StuctureView')
 @section('content')
 <section class="section">
+
+
   <div class="section-header">
     <h1>Data Penduduk</h1>
     <div class="section-header-breadcrumb">
@@ -12,6 +14,9 @@
   <div class="card">
     <div class="card-header">
       <h4>Data Penduduk</h4>
+    <a href="{{url('/home/penduduk/add')}}" class="btn btn-outline-primary ml-auto">
+        <i class="fas fa-plus"></i> Tambah Item
+      </a>
     </div>
     <div class="card-body">
          <div class="table-responsive">

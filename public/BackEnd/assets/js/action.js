@@ -169,12 +169,7 @@ function deleteData(url,to)
       SaveData("/home/petugas/add",$(this).serialize(),"/home/petugas")
     }
   })
-  $('#FactionProvinsi').on('submit', function(e){
-    e.preventDefault();
-    if($('#btn-provinsi').val() == "Tambah"){
-      SaveData("/home/provinsi",$(this).serialize(),"/home/provinsi")
-    }
-  })
+
 
   $(document).on('click','.btn-user-delete', function(e){
     e.preventDefault();
@@ -182,6 +177,32 @@ function deleteData(url,to)
     url = "/home/petugas/delete/" + id;
     deleteData(url, "/home/petugas")
   })
+
+
+// alamat
+
+  $('#FactionProvinsi').on('submit', function(e){
+    e.preventDefault();
+    if($('#btn-provinsi').val() == "Tambah"){
+      SaveData("/home/provinsi",$(this).serialize(),"/home/provinsi")
+    }
+  })
+
+  $('#FactionProvinsi').on('submit', function(e){
+    e.preventDefault();
+    if($('.btn-provinsi').val() == "Ubah"){
+      var id = $(this).attr('id') 
+      SaveData("/home/provinsi/update/" + id, $(this).serialize(),"/home/provinsi")
+    }
+  });
+
+  $(document).on('click', '.btn-provinsi-delete', function(e){
+    e.preventDefault();
+    var id = $(this).attr('id')
+    url = "/home/provinsi/delete/" + id;
+    deleteData(url, "/home/provinsi")
+  })
+
 
 
 
@@ -225,6 +246,7 @@ function deleteData(url,to)
     url = "/home/kebutuhan/delete/" + id;
     deleteData(url, "/home/kebutuhan")
   })
+  
 
 
 

@@ -54,4 +54,9 @@ class PendudukController extends Controller
         kebutuhan::destroy($id);
         return response()->json(['success' => 'Data kebutuhan berhasil dihapus dari database']);
     }
+
+
+
+
+    
 }

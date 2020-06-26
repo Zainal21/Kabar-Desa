@@ -15,7 +15,6 @@
       <button type="button" class="btn btn-outline-primary ml-auto" data-toggle="modal" data-target="#FModalProvinsi">
         <i class="fas fa-plus"></i> Tambah Item
       </button>
-    
     </div>
     <div class="card-body">
          <div class="table-responsive">

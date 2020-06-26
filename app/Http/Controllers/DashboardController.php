@@ -36,5 +36,10 @@ class DashboardController extends Controller
                 ->make(true);
         }
     }
+
+    public function creatependuduk()
+    {
+        return view('BackEnd.Penduduk.v_create_penduduk');
+    }
    
 }

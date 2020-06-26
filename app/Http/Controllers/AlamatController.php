@@ -20,8 +20,8 @@ class AlamatController extends Controller
         if($request->ajax()){
             $data = provinsi::all();
             return DataTables::of($data)
-            ->addColumn('action', function(){
-                $btn = '<a href="" class="btn btn-outline-primary"><i class="fas fa-edit"></i></a><a href="" class="btn btn-outline-danger ml-2"><i class="fas fa-trash"></i></a>';
+            ->addColumn('action', function($data){
+                $btn = '<a href="/home/provinsi/edit/'.$data->id.'" class="btn btn-outline-primary"><i class="fas fa-edit"></i></a><a href="/home/provinsi/delete/'.$data->id.'" id="'.$data->id.'" class="btn btn-outline-danger ml-2 btn-provinsi-delete"><i class="fas fa-trash"></i></a>';
                 return $btn;
             })->rawColumns(['action'])
             ->make(true);
@@ -108,6 +108,33 @@ class AlamatController extends Controller
             ]);
             return response()->json(['success' => 'Data Provinsi berhasil ditambahkan ke database']);
         }
+    }
+    public function provinsiedit($id)
+    {
+        $data = [
+            'prov' => provinsi::find($id),
+        ];
+        return view('BackEnd.Helper.v_detail_provinsi',$data);
+    }
+    public function provinsiupdate(Request $request)
+    {
+        $error = Validator::make($request->all(),[
+            'nama_provinsi' => 'required',
+           
+        ]);
+        if($error->fails()){
+            return response()->json(['error' => $error->errors()->all()]);
+        }else{
+            provinsi::where(['id' => $request->id])->update([
+                'nama_provinsi' => $request->nama_provinsi,      
+            ]);
+            return response()->json(['success' => 'Data Provinsi berhasil mengubah ke database']);
+        }
+    }
+    public function provinsidestroy($id)
+    {
+        provinsi::destroy($id);
+        return response()->json(['success' => 'Data Provinsi berhasil dihapus ke database']);
     }
    
 }

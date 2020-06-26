@@ -1,10 +1,14 @@
 $(document).ready(function(){
   $('#kategori').select2();
   $('#status').select2();
+  $('#job').select2();
   $('#op_kab').select2();
+  $('#gender').select2();
+  $('#stts').select2();
+  $('#agama').select2();
  
-
-
+  
+ 
   // datatable
     $('#tbl_pekerjaan').DataTable({
       processing:true,

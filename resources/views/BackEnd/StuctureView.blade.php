@@ -84,7 +84,7 @@
               </li>
               <li class="menu-header">Layanan Pengaduan</li>
               <li class="nav-item">
-              <a href="{{url('/aspirasi/list')}}"><i class="fas fa-exclamation"></i>Daftar Aspirasi Masyarakat</a>
+              <a href="{{url('/home/aspirasi/list')}}"><i class="fas fa-exclamation"></i>Daftar Aspirasi Masyarakat</a>
               </li>
               <li class="menu-header">Konten</li>
               <li class="nav-item dropdown">
