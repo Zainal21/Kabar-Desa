@@ -27,53 +27,53 @@
               <div class="form-group row mb-4">
                 <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">nama</label>
                 <div class="col-sm-12 col-md-7">
-                <input type="text" class="form-control" name="nama" value="{{$about->nama}}">
+                <input type="text" class="form-control" name="nama" value="{{$about->nama}}" readonly>
                 </div>
               </div>
               <div class="form-group row mb-4">
                 <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Tagline</label>
                 <div class="col-sm-12 col-md-7">
-                <input type="text" class="form-control" name="tagline" value="{{$about->tagline}}"> 
+                <input type="text" class="form-control" name="tagline" value="{{$about->tagline}}" readonly> 
               </div>
             </div>
             
             <div class="form-group row mb-4">
               <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">alamat</label>
               <div class="col-sm-12 col-md-7">
-              <input type="text" class="form-control" name="alamat" value="{{$about->alamat}}"> 
+              <input type="text" class="form-control" name="alamat" value="{{$about->alamat}}"readonly> 
               </div>
             </div>
             <div class="form-group row mb-4">
               <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">email</label>
               <div class="col-sm-12 col-md-7">
-                <input type="email" class="form-control" name="email" value="{{$about->email}}"> 
+                <input type="email" class="form-control" name="email" value="{{$about->email}}"readonly> 
               </div>
             </div>
             <div class="form-group row mb-4">
               <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">telp</label>
               <div class="col-sm-12 col-md-7">
-                <input type="number" class="form-control" name="telp" value="{{$about->telp}}"> 
+                <input type="number" class="form-control" name="telp" value="{{$about->telp}}"readonly> 
               </div>
             </div>
             <div class="form-group row mb-4">
               <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">kode Google UC</label>
               <div class="col-sm-12 col-md-7">
-                <input type="text" class="form-control" name="kode" value="{{$about->kode}}"> 
+                <input type="text" class="form-control" name="kode" value="{{$about->kode}}"readonly> 
               </div>
             </div>
             <div class="form-group row mb-4">
               <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">deskripsi</label>
                 <div class="col-sm-12 col-md-7">
-                <textarea class="summernote-simple" name="deskripsi">{{$about->deskripsi }}</textarea>
+                <textarea class="summernote-simple" name="deskripsi" readonly>{{$about->deskripsi }}</textarea>
                 </div>
               </div>
             
           
               <div class="form-group row mb-4">
                 <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3"></label>
-                <div class="col-sm-12 col-md-7">
+                {{-- <div class="col-sm-12 col-md-7">
                   <input type="submit" class="btn btn-primary" value="Simpan" id="btn-tentang">
-                </div>
+                </div> --}}
               </div>
             </form>
           </div>

@@ -78,7 +78,12 @@ Route::group(['prefix' => '/home'], function(){
     Route::get('/pekerjaan/delete/{id}', 'JobController@destroy');
     Route::get('/penduduk', 'DashboardController@penduduk');
     Route::get('/penduduk/add', 'DashboardController@creatependuduk');
-    // aspirasip
+
+    // report // Belum FIxs
+    // Route::get('/report/penduduk', 'ReportController@penduduk');
+    // Route::get('/report/kebutuhan', 'ReportController@kebutuhan');
+    // Route::get('/report/aspirasi', 'ReportController@aspirasi');
+    // aspirasi
     Route::get('/aspirasi/list', 'AspirasiController@index');
   });
 

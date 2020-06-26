@@ -5,11 +5,22 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Konten;
 use App\tentang;
+use App\pekerjaan;
+use App\kebutuhan;
+use App\User;
 class HomeController extends Controller
 {
     public function index()
     {
-        return view('FrontEnd.v_index');
+        $data = [
+           
+            'artikel' => konten::all()->count(),
+            'pekerjaan' => pekerjaan::all()->count(),
+            'kebutuhan' => kebutuhan::all()->count(),
+            'user' => User::all()->count(),
+            'news' => Konten::latest()->paginate(1),
+        ];
+        return view('FrontEnd.v_index',$data);
     }
     public function kebutuhan()
     {

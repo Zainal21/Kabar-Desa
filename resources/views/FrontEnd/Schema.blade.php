@@ -34,7 +34,7 @@
             <li><a href="#" data-toggle="search" class="nav-link nav-link-lg d-sm-none"><i class="fas fa-search"></i></a></li>
           </ul>
          
-          <h5 class="text-white">Selamat Datang Di Sistem Informasi <strong>Kabar Desa</strong></h5>
+          {{-- <h6 class="text-white text-center">Selamat Datang Di Sistem Informasi <strong>Kabar Desa</strong></h5> --}}
         </form>
        
       </nav>
@@ -53,7 +53,7 @@
               </li>
               <li class="menu-header">Data</li>
               <li class="nav-item dropdown">
-                <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-columns"></i> <span>Data Penduduk</span></a>
+                <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-database"></i> <span>Data Penduduk</span></a>
                 <ul class="dropdown-menu">
                 <li><a class="nav-link" href="{{url('/en/Data-umkm-desa')}}">Data UMKM Desa</a></li>
                 <li><a class="nav-link" href="{{url('/en/Data-penduduk-desa')}}">Data Penduduk</a></li>
@@ -67,7 +67,7 @@
               <a href="{{url('/news/kabar-desa')}}" class="nav-link"><i class="fas fa-th-large"></i> <span>Kabar Desa</span></a>
               </li>
               <li class="nav-item dropdown">
-              <a href="{{url('/news/artikel-desa')}}" class="nav-link"><i class="fas fa-th-large"></i> <span>Artikel</span></a>
+              <a href="{{url('/news/artikel-desa')}}" class="nav-link"><i class="fas fa-columns"></i> <span>Artikel</span></a>
               </li>
               <li class="menu-header">Informasi website</li>
               <li class="nav-item dropdown">

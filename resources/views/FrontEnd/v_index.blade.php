@@ -10,11 +10,11 @@
           </div>
           <div class="card-stats-items">
             <div class="card-stats-item">
-              <div class="card-stats-item-count">24</div>
+            <div class="card-stats-item-count">{{$kebutuhan}}</div>
               <div class="card-stats-item-label">Kebutuhan</div>
             </div>
             <div class="card-stats-item">
-              <div class="card-stats-item-count">12</div>
+            <div class="card-stats-item-count">{{$pekerjaan}}</div>
               <div class="card-stats-item-label">Pekerjaan</div>
             </div>
             <div class="card-stats-item">
@@ -31,7 +31,7 @@
             <h4>Artikel / Konten</h4>
           </div>
           <div class="card-body">
-            59
+          {{$artikel}}
           </div>
         </div>
       </div>
@@ -46,10 +46,10 @@
         </div>
         <div class="card-wrap">
           <div class="card-header">
-            <h4>Petugas / User</h4>
+            <h4>User</h4>
           </div>
           <div class="card-body">
-            24
+            {{$user}}
           </div>
         </div>
       </div>
@@ -112,6 +112,7 @@
         </div>
       </div>
     </div>
+    @foreach ($news as $item)
     <div class="col-md-4">
       <div class="card card-hero">
         <div class="card-header">
@@ -123,21 +124,21 @@
         </div>
         <div class="card-body p-0">
           <div class="tickets-list">
-            <a href="#" class="ticket-item">
+          <a href="{{url('/news/artikel-desa/detail/'.$item->slug)}}" class="ticket-item">
               <div class="ticket-title">
-                <h4>Usaha Kecil Menengah Sedang dalam Proses Penyesuaian diera new Normal</h4>
+              <h4>{{$item->judul}}</h4>
               </div>
               <div class="ticket-info">
                 <div></div>
                 <div class="bullet"></div>
-                <div class="text-primary">1 min ago</div>
+                <div class="text-primary">{{$item->created_at->format('Y n D')}}</div>
               </div>
             </a>
-         
           </div>
         </div>
       </div>
     </div>
+    @endforeach
   </div>
   
   

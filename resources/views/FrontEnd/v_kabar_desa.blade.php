@@ -11,25 +11,25 @@
         </div>
       </div>
   
-       
-      <div class="row">
-        <div class="col-12 col-sm-6 col-md-6 col-lg-3">
-          <article class="article shadow">
-        
-            @foreach ($kabardesa as $item)
-            @if (!$item)
-            <div class="row">
-              <div class="col">
-                <div class="alert alert-danger" role="alert">
-                  Data Kabar Desa tidak tersedia
-                </div>
+      
+          @if (!$kabardesa)
+          <div class="row">
+            <div class="col">
+              <div class="alert alert-danger" role="alert">
+                Data Kabar Desa tidak tersedia
               </div>
             </div>
-            @endif
-              <article class="article shadow">
+          </div>
+          @endif
+            
+       
+      <div class="row">
+        @foreach ($kabardesa as $item)
+        <div class="col-md-3 mx-2">
+          <article class="article shadow">
                 
-                <div class="card" style="width: 18rem;">
-                  <img class="card-img-top" src="{{asset('BackEnd/assets/img/avatar/avatar-2.png')}}" alt="Card image cap">
+                <div class="card " style="width: 18rem;">
+                <img class="card-img-top" src="{{\Storage::url($item->gambar)}}" alt="Card image cap" >
                   <div class="card-body">
                   <h5 class="card-title text-bold">{{$item->judul}}</h5>
                     <p class="card-text text-bold">{{$item->author}}. <span style="float: right"> {{$item->created_at->format('Y n D')}}.</span></p>
@@ -37,12 +37,9 @@
                   <a href="{{url('/news/artikel-desa/detail/'.$item->slug)}}" class="btn btn-primary">Detail</a>
                   </div>
                 </div>
-              </article>
               
-            @endforeach
-          </article>
-          
+          </div>
+          @endforeach
         </div>
-      </div>
     </section>
 @endsection

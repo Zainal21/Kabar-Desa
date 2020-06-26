@@ -42,7 +42,7 @@ class KontenController extends Controller
        if($error->fails()){
            return response()->json(['error' => $error->errors()->all()]);
        }else{
-        $file = $request->file('image')->store('/upload/konten');
+        $file = $request->file('image')->store('public/upload/konten');
         $k = Konten::create([
             'author' => $request->author,
             'kategori' => $request->kategori,
@@ -93,7 +93,7 @@ class KontenController extends Controller
                 ]);
                 return response()->json(['success' => 'Berhasil mengubah konten dari database']);
         }
-        $file = $request->file('image')->store('/upload/konten');
+        $file = $request->file('image')->store('public/upload/konten');
             $k = Konten::where(['id' => $request->id])->update([
                 'author' => $request->author,
                 'kategori' => $request->kategori,

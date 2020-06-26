@@ -10,27 +10,27 @@
     
         </div>
       </div>
-      <div class="row">
+      {{-- <div class="row">
         <div class="col">
           <div class="alert alert-danger" role="alert">
             Data Artikel tidak tersedia
           </div>
         </div>
-      </div>
+      </div> --}}
       <div class="row">
         
         
-        
-        @foreach ($konten as $item)
-        @if (!$item)
+        {{-- @if ($konten == "")
         <div class="row">
-          <div class="col">
-            <div class="alert alert-danger" role="alert">
-              Data Kabar Desa tidak tersedia
-            </div>
+            <div class="col">
+              <div class="alert alert-danger" role="alert">
+                Data Kabar Desa tidak tersedia
+              </div>
+          </div>
         </div>
-        </div>
-        @endif
+        @endif --}}
+        @foreach ($konten as $item)
+      
         <div class="col-12 col-sm-6 col-md-6 col-lg-3">
           <article class="article shadow">
             
@@ -39,7 +39,6 @@
               <div class="card-body">
               <h5 class="card-title text-bold">{{$item->judul}}</h5>
               <p class="card-text text-bold">{{$item->author}}. <span style="float: right"> {{$item->created_at->format('Y n D')}}.</span></p>
-              
               <a href="{{url('/news/artikel-desa/detail/'.$item->slug)}}" class="btn btn-primary">Detail</a>
             </div>
           </div>
