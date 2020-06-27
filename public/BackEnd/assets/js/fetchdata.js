@@ -6,6 +6,7 @@ $(document).ready(function(){
   $('#gender').select2();
   $('#stts').select2();
   $('#agama').select2();
+  $('#nik').select2();
  
   
  
@@ -22,6 +23,24 @@ $(document).ready(function(){
         {data:'action',name:'action',orderable:false},
       ]
     });
+    $('#tbl_umkm').DataTable({
+      processing:true,
+      serverSide:true,
+      ajax:{
+        url:"/home/list/umkm",
+        method:"GET",
+      },
+      columns:[
+        {data:'npwb_usaha',name:'npwb_usaha'},
+        {data:'nama_umkm',name:'nama_umkm'},
+        {data:'email_pemilik',name:'email_pemilik'},
+        {data:'pemilik',name:'pemilik'},
+        {data:'alamat',name:'alamat'},
+        {data:'jenis_kelamin',name:'jenis_kelamin'},
+        {data:'action',name:'action',orderable:false},
+      ]
+    });
+   
 
     // petugas
     $('#tbl_petugas').DataTable({

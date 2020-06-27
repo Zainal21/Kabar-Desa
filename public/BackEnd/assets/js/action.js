@@ -150,7 +150,7 @@ function deleteData(url,to)
     deleteData(url, "/konten/list")
   })
 
-
+  
 
 
   // about
@@ -170,6 +170,14 @@ function deleteData(url,to)
     }
   })
 
+
+  $('#FactionUser').on('submit', function(e){
+    e.preventDefault();
+    if($('.btn-user-update').val() == "Simpan"){
+      var id = $(this).attr('id')
+      SaveData("/home/user/update/" + id,$(this).serialize(),"/home/user/edit/")
+    }
+  })
 
   $(document).on('click','.btn-user-delete', function(e){
     e.preventDefault();
@@ -204,9 +212,13 @@ function deleteData(url,to)
   })
 
 
+// UMKM
 
-
-
+$('#FactionUMKM').on('submit', function(e){
+  e.preventDefault();
+  if($('.btn-umkm').val() == "Tambah"){
+    SaveData("/home/umkm-desa/add",$(this).serialize(),"/home/umkm-desa")
+  }
 
 
   // kabupaten
@@ -257,11 +269,11 @@ function deleteData(url,to)
       SaveData("/home/pekerjaan/add", $(this).serialize(),"/home/pekerjaan")
     }
   });
-  $(document).on('click', '.btn-pekerjaan-delete', function(e){
-    e.preventDefault();
-    var id = $(this).attr('id')
-    url = "/home/pekerjaan/delete/" + id;
-    deleteData(url, "/home/pekerjaan")
+    $(document).on('click', '.btn-pekerjaan-delete', function(e){
+      e.preventDefault();
+      var id = $(this).attr('id')
+      url = "/home/pekerjaan/delete/" + id;
+      deleteData(url, "/home/pekerjaan")
+    })
   })
 })
-

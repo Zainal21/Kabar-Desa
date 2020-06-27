@@ -30,24 +30,28 @@ Route::group(['prefix' => '/home'], function(){
 });
 
 // site website
-  Route::get('/', 'HomeController@index');
-  Route::get('/en/Data-Kebutuhan-desa', 'HomeController@kebutuhan');
-  Route::get('/en/Data-Pekerjaan-desa', 'HomeController@pekerjaan');
-  Route::get('/en/Data-umkm-desa', 'HomeController@umkm');
-  Route::get('/en/Data-penduduk-desa', 'HomeController@penduduk');
-  Route::get('/news/kabar-desa', 'HomeController@kabardesa');
-  Route::get('/news/artikel-desa/detail/{slug}', 'HomeController@detailkabar');
-  Route::get('/news/artikel-desa', 'HomeController@artikel');
-  Route::get('/about/informasi-web-desa', 'HomeController@informasi');
-  Route::get('/about/hubungi-web-desa', 'HomeController@hubungi');
-  Route::get('/auth/login', 'AuthController@login')->name('login');
-  Route::post('/auth/login', 'AuthController@proccess');
-  Route::get('/auth/logout', 'AuthController@logout');
+    Route::get('/', 'HomeController@index');
+    Route::get('/en/Data-Kebutuhan-desa', 'HomeController@kebutuhan');
+    Route::get('/en/Data-Pekerjaan-desa', 'HomeController@pekerjaan');
+    Route::get('/en/Data-umkm-desa', 'HomeController@umkm');
+    Route::get('/en/Data-penduduk-desa', 'HomeController@penduduk');
+    Route::get('/news/kabar-desa', 'HomeController@kabardesa');
+    Route::get('/news/artikel-desa/detail/{slug}', 'HomeController@detailkabar');
+    Route::get('/news/artikel-desa', 'HomeController@artikel');
+    Route::get('/about/informasi-web-desa', 'HomeController@informasi');
+    Route::get('/about/hubungi-web-desa', 'HomeController@hubungi');
+    Route::get('/auth/login', 'AuthController@login')->name('login');
+    Route::post('/auth/login', 'AuthController@proccess');
+    Route::get('/auth/logout', 'AuthController@logout');
 
 
 
 Route::group(['prefix' => '/home'], function(){
   Route::group(['middleware' => 'auth'], function(){
+    // profile user
+    Route::get('/user/edit/', 'UserController@edituser');
+    Route::post('/user/update/{id}', 'UserController@updateuser');
+
     // Admin Manage
     Route::get('/admin', 'DashboardController@index');
     Route::get('/about', 'AboutController@index');
@@ -78,6 +82,13 @@ Route::group(['prefix' => '/home'], function(){
     Route::get('/pekerjaan/delete/{id}', 'JobController@destroy');
     Route::get('/penduduk', 'DashboardController@penduduk');
     Route::get('/penduduk/add', 'DashboardController@creatependuduk');
+    // umkm
+    Route::get('/umkm-desa', 'UMKMController@index');
+    Route::get('/list/umkm', 'UMKMController@getumkm');
+    Route::get('/umkm-desa/add', 'UMKMController@create');
+    Route::post('/umkm-desa/add', 'UMKMController@store');
+
+    
 
     // report // Belum FIxs
     // Route::get('/report/penduduk', 'ReportController@penduduk');

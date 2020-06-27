@@ -45,7 +45,7 @@
           <img alt="image" src="{{asset('BackEnd/assets/img/avatar/avatar-1.png')}}" class="rounded-circle mr-1">
           <div class="d-sm-none d-lg-inline-block">Halo, {{Auth::user()->name}}</div></a>
             <div class="dropdown-menu dropdown-menu-right">
-              <a href="features-profile.html" class="dropdown-item has-icon">
+            <a href="{{url('/home/user/edit/')}}" class="dropdown-item has-icon">
                 <i class="far fa-user"></i> Profile
               </a>
               <div class="dropdown-divider"></div>
@@ -67,18 +67,19 @@
           <ul class="sidebar-menu">
               <li class="menu-header">Dashboard</li>
               <li class="nav-item dropdown active">
-                <a href="#" class="nav-link"><i class="fas fa-fire"></i><span>Dashboard</span></a>
+              <a href="{{url('/home/admin')}}" class="nav-link"><i class="fas fa-fire"></i><span>Dashboard</span></a>
               </li>
-              <li class="menu-header">Master Data</li>
+              <li class="menu-header">Data</li>
               <li class="nav-item dropdown">
-                <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-columns"></i> <span>Penduduk</span></a>
+                <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-columns"></i> <span>Master Data</span></a>
                 <ul class="dropdown-menu">
-                  <li><a class="nav-link" href="{{url('/home/petugas')}}">Data User</a></li>
-                <li><a class="nav-link" href="{{url('/home/provinsi')}}">Data Provinsi</a></li>
-                <li><a class="nav-link" href="{{url('/home/kabupaten')}}">Data Kabupaten</a></li>
-                <li><a class="nav-link" href="{{url('/home/penduduk')}}">Data Penduduk</a></li>
-                <li><a class="nav-link" href="{{url('/home/kebutuhan')}}">Data Kebutuhan</a></li>
-                <li><a class="nav-link" href="{{url('/home/pekerjaan')}}">Data Pekerjaan</a></li>
+                  <li><a class="nav-link" href="{{url('/home/petugas')}}">Master User</a></li>
+                <li><a class="nav-link" href="{{url('/home/provinsi')}}">Master Provinsi</a></li>
+                <li><a class="nav-link" href="{{url('/home/kabupaten')}}">Master Kabupaten</a></li>
+                <li><a class="nav-link" href="{{url('/home/penduduk')}}">Master Penduduk</a></li>
+                <li><a class="nav-link" href="{{url('/home/kebutuhan')}}">Master Kebutuhan</a></li>
+                <li><a class="nav-link" href="{{url('/home/pekerjaan')}}">Master Pekerjaan</a></li>
+                <li><a class="nav-link" href="{{url('/home/umkm-desa')}}">Master UMKM</a></li>
             
                 </ul>
               </li>
@@ -105,10 +106,7 @@
                   <li><a href="{{url('/home/about')}}">Informasi Utama Website</a></li>
                 </ul>
               </li>
-             
-            
-              
-              
+ 
             <div class="mt-4 mb-4 p-3 hide-sidebar-mini">
             <a href="{{url('/auth/logout')}}" class="btn btn-primary btn-lg btn-block btn-icon-split">
                 <i class="fas fa-logout"></i> Logout

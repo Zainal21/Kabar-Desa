@@ -3,7 +3,7 @@
 <section class="section">
   <div class="section-header">
     <div class="section-header-back">
-      <a href="features-posts.html" class="btn btn-icon"><i class="fas fa-arrow-left"></i></a>
+      <a href="#" class="btn btn-icon"><i class="fas fa-arrow-left"></i></a>
     </div>
     <h1>Tambah Konten</h1>
     <div class="section-header-breadcrumb">

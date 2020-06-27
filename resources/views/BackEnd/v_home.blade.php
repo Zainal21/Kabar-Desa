@@ -113,29 +113,28 @@
         </div>
       </div>
     </div>
-    <div class="col-md-4">
-      <div class="card card-hero">
-        <div class="card-header">
-          <div class="card-icon">
-            <i class="far fa-question-circle"></i>
-          </div>
-          {{-- <h4>14</h4> --}}
-          <div class="card-description"><h4>Berita Terbaru</h4></div>
+    <div class="col-4">
+      <div class="card profile-widget">
+        <div class="profile-widget-header">
+        <img alt="image" src="{{asset('BackEnd/assets/img/avatar/avatar-1.png')}}" class="rounded-circle profile-widget-picture">
         </div>
-        <div class="card-body p-0">
-          <div class="tickets-list">
-            <a href="#" class="ticket-item">
-              <div class="ticket-title">
-                <h4>Usaha Kecil Menengah Sedang dalam Proses Penyesuaian diera new Normal</h4>
-              </div>
-              <div class="ticket-info">
-                <div></div>
-                <div class="bullet"></div>
-                <div class="text-primary">1 min ago</div>
-              </div>
-            </a>
-         
-          </div>
+        <div class="profile-widget-description">
+        <div class="profile-widget-name">{{Auth::user()->name}}<div class="text-muted d-inline font-weight-normal"><div class="slash"></div>{{Auth::user()->role}}</div></div>
+        {{Auth::user()->deskripsi}}
+        </div>
+        <div class="card-footer text-center"> 
+          <a href="#" class="btn btn-social-icon btn-facebook mr-1">
+            <i class="fab fa-facebook-f"></i>
+          </a>
+          <a href="#" class="btn btn-social-icon btn-twitter mr-1">
+            <i class="fab fa-twitter"></i>
+          </a>
+          <a href="#" class="btn btn-social-icon btn-github mr-1">
+            <i class="fab fa-github"></i>
+          </a>
+          <a href="#" class="btn btn-social-icon btn-instagram">
+            <i class="fab fa-instagram"></i>
+          </a>
         </div>
       </div>
     </div>
