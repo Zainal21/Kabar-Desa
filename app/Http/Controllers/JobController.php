@@ -19,7 +19,7 @@ class JobController extends Controller
             $data = pekerjaan::all();
             return DataTables::of($data)
             ->addColumn('action', function($data){
-                $btn = '<a href="" class="btn btn-outline-danger ml-2 btn-pekerjaan-delete" id="'.$data->id.'"><i class="fas fa-trash"></i></a>';
+                $btn = '<a href="/home/pekerjaan/delete/'.$data->id.'" class="btn btn-outline-danger ml-2 btn-pekerjaan-delete" id="'.$data->id.'"><i class="fas fa-trash"></i></a>';
                 return $btn;
             })->rawColumns(['action'])
             ->make(true);

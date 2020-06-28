@@ -61,6 +61,8 @@ Route::group(['prefix' => '/home'], function(){
     Route::get('/petugas', 'DashboardController@petugas');
     Route::post('/petugas/add', 'UserController@store');
     Route::get('/petugas/delete/{id}', 'UserController@destroy');
+    Route::get('/petugas/edit/{id}', 'UserController@edit');
+    Route::post('/petugas/update/{id}', 'UserController@update');
     // alamat
     Route::get('/provinsi', 'AlamatController@provinsi');
     Route::post('/provinsi', 'AlamatController@provinsistore');
@@ -74,9 +76,6 @@ Route::group(['prefix' => '/home'], function(){
     Route::get('/kabupaten/edit/{id}', 'AlamatController@kabupatenedit');
     Route::post('/kabupaten/update/{id}', 'AlamatController@kabupatenupdate');
     // penduduk master
-    Route::get('/kebutuhan', 'PendudukController@kebutuhan');
-    Route::post('/kebutuhan/add', 'PendudukController@savekebutuhan');
-    Route::get('/kebutuhan/delete/{id}', 'PendudukController@deletekebutuhan');
     Route::get('/pekerjaan', 'JobController@index');
     Route::post('/pekerjaan/add', 'JobController@store');
     Route::get('/pekerjaan/delete/{id}', 'JobController@destroy');
@@ -87,9 +86,17 @@ Route::group(['prefix' => '/home'], function(){
     Route::get('/list/umkm', 'UMKMController@getumkm');
     Route::get('/umkm-desa/add', 'UMKMController@create');
     Route::post('/umkm-desa/add', 'UMKMController@store');
-
+    Route::get('/umkm-desa/edit/{id}', 'UMKMController@edit');
+    Route::post('/umkm-desa/update/{id}', 'UMKMController@update');
+    Route::get('/umkm-desa/delete/{id}', 'UMKMController@destroy');
     
+    Route::get('/kebutuhan', 'PendudukController@kebutuhan');
+    Route::post('/kebutuhan/add', 'PendudukController@savekebutuhan');
+    Route::get('/kebutuhan/delete/{id}', 'PendudukController@deletekebutuhan');
 
+    Route::get('/aspirasi/buat-pengaduan', 'AspirasiController@create');
+    Route::post('/aspirasi/kirim-pengaduan', 'AspirasiController@store');
+    
     // report // Belum FIxs
     // Route::get('/report/penduduk', 'ReportController@penduduk');
     // Route::get('/report/kebutuhan', 'ReportController@kebutuhan');
@@ -97,10 +104,10 @@ Route::group(['prefix' => '/home'], function(){
     // aspirasi
     Route::get('/aspirasi/list', 'AspirasiController@index');
   });
-
 });
-
-Route::group(['middleware' => 'auth'], function(){
+  
+  
+  Route::group(['middleware' => 'auth'], function(){
     Route::group(['prefix' => '/konten'], function(){
       Route::get('/list', 'KontenController@index');
       Route::get('/add', 'KontenController@create');
@@ -108,9 +115,8 @@ Route::group(['middleware' => 'auth'], function(){
       Route::get('/edit/{id}', 'KontenController@edit');
       Route::post('/update/{id}', 'KontenController@update');
       Route::get('/delete/{id}', 'KontenController@destroy');
+    });
   });
-});
-
 
   
   

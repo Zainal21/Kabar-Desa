@@ -15,7 +15,7 @@ class UserController extends Controller
             $data = User::all();
             return DataTables::of($data)
             ->addColumn('action', function($data){
-                $btn = '<a href="" class="btn btn-outline-primary"><i class="fas fa-edit"></i></a><a href="/home/petugas/delete/'.$data->id.'" class="btn btn-outline-danger ml-2 btn-user-delete" id="'.$data->id.'"><i class="fas fa-trash"></i></a>';
+                $btn = '<a href="/home/petugas/edit/'.$data->id.'" class="btn btn-outline-primary"><i class="fas fa-edit"></i></a><a href="/home/petugas/delete/'.$data->id.'" class="btn btn-outline-danger ml-2 btn-user-delete" id="'.$data->id.'"><i class="fas fa-trash"></i></a>';
                 return $btn;
             })->rawColumns(['action'])
             ->make(true);
@@ -76,4 +76,32 @@ class UserController extends Controller
             return response()->json(['success' => 'Data User diubah dari database']);
         }
     }
+    public function edit($id)
+    {
+        $data = [
+            'user' => User::find($id) 
+        ];
+        return view('BackEnd.Petugas.P_Edit',$data);
+    }
+    public function update(Request $request)
+    {
+        $rule = [
+            'email' => 'required',
+            'name' => 'required',
+        
+        
+        ];
+        $error = Validator::make($request->all(),$rule);
+        if($error->fails()){
+            return response()->json(['error' => $error->errors()->all()]);
+        }else{
+            User::where(['id' => $request->id])->update([
+                'name' => $request->name,
+                'email' => $request->email,
+                'role' => $request->role,
+                
+            ]);
+            return response()->json(['success' => 'Data User diubah dari database']);
+            }
+        }
 }

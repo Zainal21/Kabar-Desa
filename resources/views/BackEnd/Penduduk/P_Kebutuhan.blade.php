@@ -44,7 +44,7 @@
         </button>
       </div>
       <div class="modal-body">
-       <form action="" method="post" id="FactionKebutuhan">
+       <form action="#" method="post" id="FactionKebutuhan">
          <label for="">Nama Kebutuhan</label>
          <input type="text" name="nama_kebutuhan" id="" class="form-control">
          <label for="">Jumlah</label>

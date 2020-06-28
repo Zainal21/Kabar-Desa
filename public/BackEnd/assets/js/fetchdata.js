@@ -174,5 +174,7 @@ $(document).ready(function(){
       ],
     })
 
+    $('#tbl_pengaduan').DataTable()
+
 
  })

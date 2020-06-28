@@ -1,4 +1,4 @@
-@extends('BackEnd.StructureView')
+@extends('BackEnd.StuctureView')
 @section('content')
 <section class="section">
   
@@ -12,36 +12,44 @@
   </div>
   <div class="col-12 col-md-12 col-lg-12">
   <div class="card">
-    <form method="post" class="needs-validation" novalidate="">
-      <div class="card-header">
+  <form method="post" class="needs-validation" id="FPengaduan" action=""  enctype="multipart/form-data">  
+    <div class="card-header">
         <h4>Aspirasi Kami</h4>
       </div>
       <div class="card-body">
           <div class="row">
-            <div class="form-group col-md-6 col-12">
-              <label>Nama</label>
-              <input type="text" class="form-control" value="Ujang" required="">
-            
+            <div class="col">
+              <label for="">Nama</label>
+              <select name="penduduk_id" id="status" class="form-control">
+                <option value="">-Nama Penduduk-</option>
+                @foreach ($penduduk as $item)   
+                  <option value="{{$item->id}}">{{$item->Nama_penduduk}}</option>
+                @endforeach
+              </select>
             </div>
-            <div class="form-group col-md-6 col-12">
-              <label>Email</label>
-              <input type="text" class="form-control" value="Maman" required="">
+            <div class="col">
+              <label for="">NIK</label>
+              <select name="" id="status" class="form-control">
+                <option value="">-NIK Penduduk-</option>
+                @foreach ($penduduk as $item)   
+                  <option value="{{$item->NIK}}">{{$item->NIK}}</option>
+                @endforeach
+              </select>
             </div>
-          </div>
-          <div class="form-group col-md-12 col-12">
-            <label for="">Aspirasi</label>
-            <textarea name="" id="" cols="20" rows="10" class="form-control"></textarea>
-          </div>
-          <div class="form-group col-md-12 col-12">
-            <label for="">lampiran</label>
-           <input type="file" name="" class="form-control" id="">
-          </div>
-          <div class="row">
-            <div class="form-group col-md-12 col-12">  
+          </div> 
+          <div class="row mt-2">
+            <div class="col">
+              <label for="">pengaduan</label>
+              <input type="text" name="pengaduan" class="form-control" id="" >
+            </div>
+            <div class="col">
+              <label for=""><label for="">Foto / Lampiran</label></label>
+              <input type="file" name="foto" class="form-control" id="" >
+            </div>
           </div>
       </div>
       <div class="card-footer text-right">
-        <button type="submit" class="btn btn-primary">Kirim</button>
+        <input type="submit" class="btn btn-primary btn-pengaduan" value="Kirim">
     </form>
   </div>
 

@@ -1,5 +1,3 @@
-
-
 $(document).ready(function(){
   $.ajaxSetup({
     headers: {
@@ -179,6 +177,15 @@ function deleteData(url,to)
     }
   })
 
+
+  $('#FactionPetugas').on('submit', function(e){
+    e.preventDefault();
+    if($('.btn-petugas').val() == "Ubah"){
+      var id = $(this).attr('id')
+      SaveData("/home/petugas/update/" + id,$(this).serialize(),"/home/petugas/")
+    }
+  })
+
   $(document).on('click','.btn-user-delete', function(e){
     e.preventDefault();
     var id = $(this).attr('id')
@@ -195,6 +202,8 @@ function deleteData(url,to)
       SaveData("/home/provinsi",$(this).serialize(),"/home/provinsi")
     }
   })
+
+  
 
   $('#FactionProvinsi').on('submit', function(e){
     e.preventDefault();
@@ -219,8 +228,20 @@ $('#FactionUMKM').on('submit', function(e){
   if($('.btn-umkm').val() == "Tambah"){
     SaveData("/home/umkm-desa/add",$(this).serialize(),"/home/umkm-desa")
   }
-
-
+})
+$('#FactionUMKM').on('submit', function(e){
+  e.preventDefault();
+  if($('.btn-umkm').val() == "Ubah"){
+    var id = $(this).attr('id')
+    SaveData("/home/umkm-desa/update/"+ id,$(this).serialize(),"/home/umkm-desa")
+  }
+})
+$(document).on('click', '.btn-umkm-delete', function(e){
+  e.preventDefault();
+  var id = $(this).attr('id')
+  url = "/home/umkm-desa/delete/" + id;
+  deleteData(url, "/home/umkm-desa")
+})
   // kabupaten
   $('#FactionKabupaten').on('submit', function(e){
     e.preventDefault();
@@ -270,10 +291,18 @@ $('#FactionUMKM').on('submit', function(e){
     }
   });
     $(document).on('click', '.btn-pekerjaan-delete', function(e){
-      e.preventDefault();
-      var id = $(this).attr('id')
-      url = "/home/pekerjaan/delete/" + id;
-      deleteData(url, "/home/pekerjaan")
+            e.preventDefault();
+            var id = $(this).attr('id')
+            url = "/home/pekerjaan/delete/" + id;
+            deleteData(url, "/home/pekerjaan")
     })
-  })
-})
+    // pengaduan
+    $('#FPengaduan').on('submit', function(e){
+      e.preventDefault();
+      if($('.btn-pengaduan').val() == "Kirim"){
+        SaveData("/home/aspirasi/kirim-pengaduan", $(this).serialize(),"/home/aspirasi/buat-pengaduan")
+      }
+    });
+ 
+   
+});

@@ -14,36 +14,30 @@
       <h4>Data Aspirasi</h4>
     </div>
     <div class="card-body">
-      <a href="" class="btn btn-primary float-right"> <i class="fas fa-plus"></i> Tambah</a>
          <div class="table-responsive">
-          <table class="table table-hover">
+          <table class="table table-hover" id="tbl_pengaduan" width="100%">
             <thead>
               <tr>
-                <th scope="col">#</th>
-                <th scope="col">First</th>
-                <th scope="col">Last</th>
-                <th scope="col">Handle</th>
+                <th scope="col">NIK</th>
+                <th scope="col">Nama</th>
+                <th scope="col">Status</th>
+                <th scope="col">Action</th>
               </tr>
             </thead>
+          
             <tbody>
+              @foreach ($pengaduan as $item)
               <tr>
-                <th scope="row">1</th>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>@mdo</td>
+                <td>{{$item->NIK}}</td>
+                <td>{{$item->Nama_penduduk}}</td>
+                <td><?= $item->status == 'Terjawab' ? '<button type="button" class="btn btn-success"><span class="badge badge-light"></span>
+                  <i class="fas  fa-check-circle"></i>
+                </button>' : '<button type="button" class="btn btn-danger"><span class="badge badge-light"></span>
+                  <i class="fas  fa-minus-circle"></i>
+                </button>' ?></td>
+                <td><a href="" class="btn btn-outline-primary btn-sm mr-2" ><i class="fas fa-eye"></i></a><a href="" class="btn btn-outline-danger btn-sm mr-2"  ><i class="fas fa-trash"></i></a><a href="" class="btn btn-outline-info btn-sm mr-2" ><i class="fas fa-comment"></i></a></td>
               </tr>
-              <tr>
-                <th scope="row">2</th>
-                <td>Jacob</td>
-                <td>Thornton</td>
-                <td>@fat</td>
-              </tr>
-              <tr>
-                <th scope="row">3</th>
-                <td>Larry</td>
-                <td>the Bird</td>
-                <td>@twitter</td>
-              </tr>
+              @endforeach
             </tbody>
           </table>
       </div>
