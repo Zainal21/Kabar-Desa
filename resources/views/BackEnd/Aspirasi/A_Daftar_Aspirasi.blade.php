@@ -35,7 +35,17 @@
                 </button>' : '<button type="button" class="btn btn-danger"><span class="badge badge-light"></span>
                   <i class="fas  fa-minus-circle"></i>
                 </button>' ?></td>
-                <td><a href="" class="btn btn-outline-primary btn-sm mr-2" ><i class="fas fa-eye"></i></a><a href="" class="btn btn-outline-danger btn-sm mr-2"  ><i class="fas fa-trash"></i></a><a href="" class="btn btn-outline-info btn-sm mr-2" ><i class="fas fa-comment"></i></a></td>
+                <td>
+                  
+                  <a href="{{url('/home/aspirasi/detail-pengaduan/'.$item->slug)}}" class="btn btn-outline-primary btn-sm mr-2" ><i class="fas fa-eye"></i></a>
+             
+                  @if ($item->status == 'Terjawab')
+                      
+                  <a href="{{url('home/aspirasi/detail-tanggapan/'. $item->slug)}}" class="btn btn-outline-info btn-sm mr-2" ><i class="fas fa-comment"></i></a>
+                  @endif
+                  @if (Auth::user()->role == "Admin" && "Petugas")   
+                  <a href="{{url('/home/aspirasi/tulis-tanggapan/'.$item->slug)}}" class="btn btn-outline-warning btn-sm mr-2" ><i class="fas fa-pen"></i></a></td>
+                  @endif
               </tr>
               @endforeach
             </tbody>

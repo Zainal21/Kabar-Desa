@@ -96,7 +96,7 @@ function deleteData(url,to)
       text:'Data ini akan dihapus',
       type:'warning',
       showCancelButton: true,
-      confirmButtonColor: '#308',
+      confirmButtonColor: 'red',
       cancelButtonColor:'$d33',
       confirmButtonText:'hapus Data'
     }).then((result)=>{
@@ -178,6 +178,17 @@ function deleteData(url,to)
   })
 
 
+
+
+// penduduk
+  
+  $('#FactionPenduduk').on('submit', function(e){
+    e.preventDefault();
+    if($('.btn-penduduk').val() == "Simpan"){
+      SaveData("/home/penduduk/create",$(this).serialize(),"/home/penduduk")
+    }
+  })
+ 
   $('#FactionPetugas').on('submit', function(e){
     e.preventDefault();
     if($('.btn-petugas').val() == "Ubah"){
@@ -185,6 +196,14 @@ function deleteData(url,to)
       SaveData("/home/petugas/update/" + id,$(this).serialize(),"/home/petugas/")
     }
   })
+
+  $(document).on('click','.btn-penduduk-hapus', function(e){
+    e.preventDefault();
+    var id = $(this).attr('id')
+    url = "/home/penduduk/delete/" + id;
+    deleteData(url, "/home/penduduk")
+  })
+ 
 
   $(document).on('click','.btn-user-delete', function(e){
     e.preventDefault();
@@ -300,9 +319,25 @@ $(document).on('click', '.btn-umkm-delete', function(e){
     $('#FPengaduan').on('submit', function(e){
       e.preventDefault();
       if($('.btn-pengaduan').val() == "Kirim"){
-        SaveData("/home/aspirasi/kirim-pengaduan", $(this).serialize(),"/home/aspirasi/buat-pengaduan")
+        var FD = new FormData(this);
+        saveImg("/home/aspirasi/kirim-pengaduan", FD,"/home/aspirasi/buat-pengaduan")
       }
     });
  
+    $('#Ftanggapan').on('submit', function(e){
+      e.preventDefault();
+      if($('.btn-tanggapan').val() == "Kirim"){
+        var slug = $(this).attr('id');
+        SaveData("/home/aspirasi/kirim-tanggapan/"+ slug, $(this).serialize(),"/home/aspirasi/list")
+      }
+    });
+    $(document).on('click', '.btn-hapus-pengaduan', function(e){
+      e.preventDefault();
+      var id = $(this).attr('id')
+      url = "/home/aspirasi/hapus-pengaduan/" + id;
+      deleteData(url, "/home/aspirasi/list")
+  })
+    
+    
    
 });

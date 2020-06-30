@@ -20,7 +20,7 @@
         <div class="card-body">
           <input type="hidden" name="id" class="form-control" id="" value="{{$item->id}}" readonly>
           <input type="hidden" name="slug" class="form-control" id="" value="{{$item->slug}}" readonly>
-          <div class="row">
+          {{-- <div class="row">
             <div class="col">
               <label for="">Nama</label>  
               <input type="text" class="form-control" value="{{$item->Nama_penduduk}}"  readonly>
@@ -31,7 +31,7 @@
              <input type="text" name="" id="" value="{{$item->NIK}}"   class="form-control"readonly>
               
             </div>
-          </div> 
+          </div>  --}}
           <div class="row mt-2">
             <div class="col">
               <label for="">pengaduan</label>
@@ -39,7 +39,7 @@
             </div>
             <div class="col">
               <label for="">Tanggapan</label>
-              <input type="text" name="Tanggapan" class="form-control" id="" value="" >
+            <input type="text" name="Tanggapan" class="form-control" id="" value="{{$item->Tanggapan}}" readonly >
             </div>
             <div class="col">
               <label for=""><label for="">Foto / Lampiran</label></label>
@@ -52,7 +52,7 @@
           </div>
       </div>
       <div class="card-footer text-right">
-      <input type="submit" class="btn btn-success btn-tanggapan" id="{{$item->slug}}" value="Kirim">
+     
       <a href="{{url('/home/aspirasi/list')}}" class="btn btn-info " >Kembali</a>
     </form>
     @endforeach

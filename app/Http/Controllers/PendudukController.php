@@ -12,7 +12,8 @@ class PendudukController extends Controller
     public function kebutuhan()
     {
         $data = [
-            'kabupaten' => \App\kabupaten::all()
+            'kabupaten' => \App\kabupaten::all(),
+            'title' => 'Master Kebutuhan',
         ];
         return view('BackEnd.Penduduk.P_Kebutuhan',$data);
     }
@@ -55,6 +56,7 @@ class PendudukController extends Controller
         return response()->json(['success' => 'Data kebutuhan berhasil dihapus dari database']);
     }
 
+ 
 
 
 

@@ -75,45 +75,7 @@
     </div>
   </div>
   <div class="row">
-    <div class="col-md-8">
-      <div class="card">
-        <div class="card-header">
-          <h4>Data UMKM Desa</h4>
-          <div class="card-header-action">
-          </div>
-        </div>
-        <div class="card-body p-0">
-          <div class="table-responsive table-invoice">
-            <table class="table table-striped">
-              <tr>
-                <th>NPWP Pemilik</th>
-                <th>Nama UMKM</th>
-                <th>Email</th>
-                <th>Pemilik</th>
-                <th>Modal Dasar</th>
-                <th>Modal Ditempatkan</th>
-                <th>Alamat</th>
-                <th>Action</th>
-              </tr>
-              <tr>
-                <td><a href="#">19.012.829.2-01.331</a></td>
-                <td class="font-weight-600">UMKM ZAIN SHOP</td>
-                <td><div class="badge badge-warning">Muhamad Zainal Arifin</div></td>
-                <td>PenulisDuduk@gmail.com</td>
-                <td>24.000/000</td>
-                <td>20.000.000</td>
-                <td>Sidorejo, Kaliboto, Mojogedang, Karanganyar</td>
-                <td>
-                  <a href="#" class="btn btn-primary">Detail</a>
-                </td>
-              </tr>
-              
-            </table>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="col-4">
+    <div class="col-6">
       <div class="card profile-widget">
         <div class="profile-widget-header">
         <img alt="image" src="{{asset('BackEnd/assets/img/avatar/avatar-1.png')}}" class="rounded-circle profile-widget-picture">
@@ -122,7 +84,7 @@
         <div class="profile-widget-name">{{Auth::user()->name}}<div class="text-muted d-inline font-weight-normal"><div class="slash"></div>{{Auth::user()->role}}</div></div>
         {{Auth::user()->deskripsi}}
         </div>
-        <div class="card-footer text-center"> 
+        {{-- <div class="card-footer text-center"> 
           <a href="#" class="btn btn-social-icon btn-facebook mr-1">
             <i class="fab fa-facebook-f"></i>
           </a>
@@ -135,6 +97,14 @@
           <a href="#" class="btn btn-social-icon btn-instagram">
             <i class="fab fa-instagram"></i>
           </a>
+        </div> --}}
+      </div>
+    </div>
+    <div class="col-6">
+      <div class="card profile-widget" style="background-color: blue">
+        <div class="card-body text-white">
+        <h6>Selamat Datang,<strong> {{Auth::user()->name}}</strong>,</h6>
+        <h3 style="font-weight: 700">Di Sistem Informasi Kabar Desa</h3>
         </div>
       </div>
     </div>

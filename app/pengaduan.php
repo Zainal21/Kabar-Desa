@@ -8,6 +8,6 @@ class pengaduan extends Model
 {
     protected $table = 'pengaduan';
     protected $fillable = [
-        'penduduk_id', 'pengaduan', 'foto', 'status'
+        'penduduk_id', 'pengaduan', 'foto', 'status','slug'
     ];
 }

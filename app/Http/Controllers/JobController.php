@@ -10,6 +10,9 @@ class JobController extends Controller
 {
     public function index()
     {
+        $data = [
+            'title' => 'Master Pekerjaan'
+          ];
         return view('BackEnd.Penduduk.P_Pekerjaan');
     }
     public function getpekerjaan(Request $request)

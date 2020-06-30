@@ -101,7 +101,7 @@ $(document).ready(function(){
     $('#tbl_penduduk').DataTable({
       processing:true,
       serverSide:true,
-   
+      deferRender: true,
       ajax:{
         url:"/home/penduduk/list",
         method:"GET",

@@ -6,8 +6,11 @@ use Illuminate\Http\Request;
 
 class ReportController extends Controller
 {
-    public function penduduk()
+    public function index()
     {
-        
+      $data = [
+        'title' => 'Report'
+      ];
+        return view('BackEnd.Report.v_report',$data);
     }
 }

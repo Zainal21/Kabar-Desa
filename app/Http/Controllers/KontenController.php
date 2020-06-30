@@ -13,7 +13,10 @@ class KontenController extends Controller
 {
     public function index()
     {
-        return view('BackEnd.Konten.K_Konten');
+        $var = [
+            'title' => 'Master Konten',
+        ];
+        return view('BackEnd.Konten.K_Konten',$var);
     }
     public function getKonten(Request $request)
     {
@@ -29,7 +32,11 @@ class KontenController extends Controller
     }
     public function create()
     {
-        return view('BackEnd.Konten.K_Tambah');
+        $var = 
+        [
+            'title' => 'Tambah Kebutuhan',
+        ];
+        return view('BackEnd.Konten.K_Tambah',$var);
     }
     public function store(Request $request)
     {
@@ -59,6 +66,7 @@ class KontenController extends Controller
     {
         $data = [
             'konten' => Konten::find($id),
+            'title' => 'Edit Konten',
             'kategori' => [
                 'Kabar Desa',
                 'Artikel'

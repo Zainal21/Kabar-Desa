@@ -47,41 +47,58 @@ Route::group(['prefix' => '/home'], function(){
 
 
 Route::group(['prefix' => '/home'], function(){
+
   Route::group(['middleware' => 'auth'], function(){
-    // profile user
+    Route::get('/aspirasi/list', 'AspirasiController@index');
+    Route::get('/aspirasi/detail-tanggapan/{slug}', 'AspirasiController@tanggapandetail');
     Route::get('/user/edit/', 'UserController@edituser');
     Route::post('/user/update/{id}', 'UserController@updateuser');
-
-    // Admin Manage
+  });
+  Route::group(['middleware' => ['auth','rolecheck:Petugas']], function(){
+    // profile user
+  
+    
+    
     Route::get('/admin', 'DashboardController@index');
-    Route::get('/about', 'AboutController@index');
-    Route::get('/about', 'AboutController@index');
-    Route::post('/tentang/update/{id}', 'AboutController@update');
-    // petugas
-    Route::get('/petugas', 'DashboardController@petugas');
-    Route::post('/petugas/add', 'UserController@store');
-    Route::get('/petugas/delete/{id}', 'UserController@destroy');
-    Route::get('/petugas/edit/{id}', 'UserController@edit');
-    Route::post('/petugas/update/{id}', 'UserController@update');
-    // alamat
-    Route::get('/provinsi', 'AlamatController@provinsi');
-    Route::post('/provinsi', 'AlamatController@provinsistore');
-    Route::get('/provinsi/edit/{id}', 'AlamatController@provinsiedit');
-    Route::post('/provinsi/update/{id}', 'AlamatController@provinsiupdate');
-    Route::get('/provinsi/delete/{id}', 'AlamatController@provinsidestroy');
-    // kabupaten
-    Route::get('/kabupaten', 'AlamatController@kabupaten');
-    Route::post('/kabupaten/add', 'AlamatController@kabupatenstore');
-    Route::get('/kabupaten/delete/{id}', 'AlamatController@kabupatendelete');
-    Route::get('/kabupaten/edit/{id}', 'AlamatController@kabupatenedit');
-    Route::post('/kabupaten/update/{id}', 'AlamatController@kabupatenupdate');
-    // penduduk master
-    Route::get('/pekerjaan', 'JobController@index');
-    Route::post('/pekerjaan/add', 'JobController@store');
-    Route::get('/pekerjaan/delete/{id}', 'JobController@destroy');
+    // report // Belum FIxs
+   
+    // Route::get('/report/kebutuhan', 'ReportController@kebutuhan');
+    // Route::get('/report/aspirasi', 'ReportController@aspirasi');
+    // aspirasi
+   
+  });
+  Route::group(['middleware' => ['auth', 'rolecheck:Admin']], function(){
+     // Admin Manage
+    Route::get('/admin', 'DashboardController@index');
     Route::get('/penduduk', 'DashboardController@penduduk');
     Route::get('/penduduk/add', 'DashboardController@creatependuduk');
-    // umkm
+    Route::post('/penduduk/create', 'DashboardController@storependuduk');
+    Route::get('/penduduk/delete/{id}', 'DashboardController@destroypenduduk');
+    Route::get('/penduduk/edit/{id}', 'DashboardController@editpenduduk');
+    Route::post('/penduduk/en/update/{id}', 'DashboardController@updatedatapenduduk');
+     // petugas
+     Route::get('/petugas', 'DashboardController@petugas');
+     Route::post('/petugas/add', 'UserController@store');
+     Route::get('/petugas/delete/{id}', 'UserController@destroy');
+     Route::get('/petugas/edit/{id}', 'UserController@edit');
+     Route::post('/petugas/update/{id}', 'UserController@update');
+     // alamat
+     Route::get('/provinsi', 'AlamatController@provinsi');
+     Route::post('/provinsi', 'AlamatController@provinsistore');
+     Route::get('/provinsi/edit/{id}', 'AlamatController@provinsiedit');
+     Route::post('/provinsi/update/{id}', 'AlamatController@provinsiupdate');
+     Route::get('/provinsi/delete/{id}', 'AlamatController@provinsidestroy');
+     // kabupaten
+     Route::get('/kabupaten', 'AlamatController@kabupaten');
+     Route::post('/kabupaten/add', 'AlamatController@kabupatenstore');
+     Route::get('/kabupaten/delete/{id}', 'AlamatController@kabupatendelete');
+     Route::get('/kabupaten/edit/{id}', 'AlamatController@kabupatenedit');
+     Route::post('/kabupaten/update/{id}', 'AlamatController@kabupatenupdate');
+     // penduduk master
+     Route::get('/pekerjaan', 'JobController@index');
+     Route::post('/pekerjaan/add', 'JobController@store');
+     Route::get('/pekerjaan/delete/{id}', 'JobController@destroy');
+       // umkm
     Route::get('/umkm-desa', 'UMKMController@index');
     Route::get('/list/umkm', 'UMKMController@getumkm');
     Route::get('/umkm-desa/add', 'UMKMController@create');
@@ -89,25 +106,32 @@ Route::group(['prefix' => '/home'], function(){
     Route::get('/umkm-desa/edit/{id}', 'UMKMController@edit');
     Route::post('/umkm-desa/update/{id}', 'UMKMController@update');
     Route::get('/umkm-desa/delete/{id}', 'UMKMController@destroy');
-    
+    // kebutuhan
     Route::get('/kebutuhan', 'PendudukController@kebutuhan');
     Route::post('/kebutuhan/add', 'PendudukController@savekebutuhan');
     Route::get('/kebutuhan/delete/{id}', 'PendudukController@deletekebutuhan');
 
+  });
+  Route::group(['middleware' => 'auth', 'rolecheck:Masyarakat'], function(){
+    Route::get('/admin', 'DashboardController@index');
+   
     Route::get('/aspirasi/buat-pengaduan', 'AspirasiController@create');
     Route::post('/aspirasi/kirim-pengaduan', 'AspirasiController@store');
-    
-    // report // Belum FIxs
-    // Route::get('/report/penduduk', 'ReportController@penduduk');
-    // Route::get('/report/kebutuhan', 'ReportController@kebutuhan');
-    // Route::get('/report/aspirasi', 'ReportController@aspirasi');
-    // aspirasi
-    Route::get('/aspirasi/list', 'AspirasiController@index');
+    Route::get('/aspirasi/detail-pengaduan/{slug}', 'AspirasiController@show');
+  });
+  Route::group(['middleware' => ['auth', 'rolecheck:Admin,Petugas']], function(){
+    Route::get('/about', 'AboutController@index');
+    Route::post('/tentang/update/{id}', 'AboutController@update');
+    Route::get('/report/aplikasi', 'ReportController@index');
+
+    Route::get('/aspirasi/tulis-tanggapan/{slug}', 'AspirasiController@details');
+    Route::post('/aspirasi/kirim-tanggapan/{slug}', 'AspirasiController@send');
+
   });
 });
   
   
-  Route::group(['middleware' => 'auth'], function(){
+  Route::group(['middleware' => ['auth','rolecheck:Petugas,Admin']], function(){
     Route::group(['prefix' => '/konten'], function(){
       Route::get('/list', 'KontenController@index');
       Route::get('/add', 'KontenController@create');

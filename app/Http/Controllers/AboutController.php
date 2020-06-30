@@ -9,7 +9,8 @@ class AboutController extends Controller
     public function index()
     {
         $data = [
-            'about' => Tentang::where(['id' =>1])->first()
+            'about' => Tentang::where(['id' =>1])->first(),
+            'title'=> 'Tentang Website'
         ];
         return view('BackEnd.Tentang.v_Tentang',$data);
     }

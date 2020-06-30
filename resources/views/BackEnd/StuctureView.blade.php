@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
   <meta name="csrf-token" content="{{ csrf_token() }}" />
-  <title>Dashboard</title>
+  <title>{{$title}}</title>
 
   <!-- General CSS Files -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -69,45 +69,55 @@
               <li class="nav-item dropdown active">
               <a href="{{url('/home/admin')}}" class="nav-link"><i class="fas fa-fire"></i><span>Dashboard</span></a>
               </li>
-              <li class="menu-header">Data</li>
-              <li class="nav-item dropdown">
-                <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-columns"></i> <span>Master Data</span></a>
-                <ul class="dropdown-menu">
-                  <li><a class="nav-link" href="{{url('/home/petugas')}}">Master User</a></li>
-                <li><a class="nav-link" href="{{url('/home/provinsi')}}">Master Provinsi</a></li>
-                <li><a class="nav-link" href="{{url('/home/kabupaten')}}">Master Kabupaten</a></li>
-                <li><a class="nav-link" href="{{url('/home/penduduk')}}">Master Penduduk</a></li>
-                <li><a class="nav-link" href="{{url('/home/kebutuhan')}}">Master Kebutuhan</a></li>
-                <li><a class="nav-link" href="{{url('/home/pekerjaan')}}">Master Pekerjaan</a></li>
-                <li><a class="nav-link" href="{{url('/home/umkm-desa')}}">Master UMKM</a></li>
-            
-                </ul>
-              </li>
+              @if (Auth::user()->role == "Admin")   
+                <li class="menu-header">Data</li>
+                <li class="nav-item dropdown">
+                  <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-columns"></i> <span>Master Data</span></a>
+                  <ul class="dropdown-menu">
+                    <li><a class="nav-link" href="{{url('/home/petugas')}}">Master User</a></li>
+                    <li><a class="nav-link" href="{{url('/home/provinsi')}}">Master Provinsi</a></li>
+                    <li><a class="nav-link" href="{{url('/home/kabupaten')}}">Master Kabupaten</a></li>
+                    <li><a class="nav-link" href="{{url('/home/penduduk')}}">Master Penduduk</a></li>
+                    <li><a class="nav-link" href="{{url('/home/kebutuhan')}}">Master Kebutuhan</a></li>
+                    <li><a class="nav-link" href="{{url('/home/pekerjaan')}}">Master Pekerjaan</a></li>
+                    <li><a class="nav-link" href="{{url('/home/umkm-desa')}}">Master UMKM</a></li>
+                    
+                  </ul>
+                </li>
+              @endif
               <li class="menu-header">Layanan Pengaduan</li>
               <li class="nav-item">
-              <a href="{{url('/home/aspirasi/list')}}"><i class="fas fa-exclamation"></i>Daftar Aspirasi Masyarakat</a>
-              <a href="{{url('/home/aspirasi/buat-pengaduan')}}"><i class="fas fa-exclamation"></i>Buat Pengaduan</a>
-              </li>
+              
+                <a href="{{url('/home/aspirasi/list')}}"><i class="fas fa-exclamation"></i>Daftar Aspirasi Masyarakat</a>
+               @if(Auth::user()->role == "Masyarakat")
+             
+              <a href="{{url('/home/aspirasi/buat-pengaduan')}}"><i class="fas fa-pen"></i>Buat Pengaduan</a>
+              @endif
+            </li>
+              @if (Auth::user()->role == 'Petugas')
               <li class="menu-header">Konten</li>
-              <li class="nav-item dropdown">
-               <a href="{{url('/konten/list')}}" class="nav-link"><i class="fas fa-th-large"></i> <span>Artikel / Konten</span></a>
-              </li>
-              <li class="nav-item dropdown">
-                <a href="#" class="nav-link has-dropdown"><i class="far fa-file-alt"></i> <span>Laporan</span></a>
-                <ul class="dropdown-menu">
-                  <li><a class="nav-link" href="">Data Penduduk</a></li>
-                  <li><a class="nav-link" href="">Kebutuhan</a></li>
-                  <li><a class="nav-link" href="">Pekerjaan</a></li>
-                </ul>
-              </li>
-              <li class="menu-header">Pengaturan Website</li>
-              <li class="nav-item dropdown">
-              <a href="#" class="nav-link has-dropdown"><i class="far fa-user"></i> <span>Manage</span></a>
-                <ul class="dropdown-menu">
-                  <li><a href="{{url('/home/about')}}">Informasi Utama Website</a></li>
-                </ul>
-              </li>
- 
+                <li class="nav-item dropdown">
+                  <a href="{{url('/konten/list')}}" class="nav-link"><i class="fas fa-th-large"></i> <span>Artikel / Konten</span></a>
+                </li>
+                @endif
+            @if (Auth::user()->role == "Admin")
+                
+                  <li class="nav-item dropdown">
+                    <a href="{{url('/home/report/aplikasi')}}" class="nav-link"><i class="far fa-file-alt"></i> <span>Laporan</span></a>
+                    {{-- <ul class="dropdown-menu">
+                      <li><a class="nav-link" href="">Data Penduduk</a></li>
+                      <li><a class="nav-link" href="">Kebutuhan</a></li>
+                      <li><a class="nav-link" href="">Pekerjaan</a></li>
+                    </ul> --}}
+                  </li>
+                  <li class="menu-header">Pengaturan Website</li>
+                  <li class="nav-item dropdown">
+                    <a href="#" class="nav-link has-dropdown"><i class="far fa-user"></i> <span>Manage</span></a>
+                    <ul class="dropdown-menu">
+                      <li><a href="{{url('/home/about')}}">Informasi Utama Website</a></li>
+                    </ul>
+                  </li>
+                  @endif
             <div class="mt-4 mb-4 p-3 hide-sidebar-mini">
             <a href="{{url('/auth/logout')}}" class="btn btn-primary btn-lg btn-block btn-icon-split">
                 <i class="fas fa-logout"></i> Logout
