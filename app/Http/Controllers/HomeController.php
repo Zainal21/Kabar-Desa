@@ -9,6 +9,8 @@ use App\pekerjaan;
 use App\kebutuhan;
 use App\User;
 use App\UMKM;
+use App\pengaduan;
+use DB;
 class HomeController extends Controller
 {
     public function index()
@@ -21,7 +23,8 @@ class HomeController extends Controller
             'kebutuhan' => kebutuhan::all()->count(),
             'user' => User::all()->count(),
             'news' => Konten::latest()->paginate(1),
-            'umkm' => umkm::all()
+            'umkm' => umkm::all()->count(),
+            'aspirasi'=> pengaduan::where(['status' => 'Terjawab'])->count()
         ];
         return view('FrontEnd.v_index',$data);
     }
@@ -57,7 +60,9 @@ class HomeController extends Controller
     public function kabarDesa()
     {
         $data = [
-            'kabardesa' => Konten::where(['kategori' => 'Kabar Desa'])->get(),
+            'kabardesa' => Konten::where(['kategori' => 'Kabar Desa'])
+            ->where(['status' => 'Publish'])
+            ->get(),
             'title' => 'Kabar Desa'
         ];
         return view('FrontEnd.v_kabar_desa',$data);
@@ -74,7 +79,8 @@ class HomeController extends Controller
     {
         $data = [
             'konten' => Konten::where(['kategori' => 'Artikel'])
-                        ->where(['status' => 'Publish'])->get(),
+                        ->where(['status' => 'Publish'])
+                        ->get(),
             'title' => 'Artikel'
         ];
         return view('FrontEnd.v_artikel',$data);
@@ -95,9 +101,13 @@ class HomeController extends Controller
     public function hubungi()
     {
         $data = [
-            'title' => 'Data Pengaduan'
+            'pengaduan' => DB::table('pengaduan')
+                          ->join('penduduk', 'penduduk.id', '=', 'pengaduan.penduduk_id')
+                          ->select('pengaduan.*','penduduk.*')
+                          ->get(),
+              'title' => 'Data Pengaduan' 
           ];
-        return view('FrontEnd.Info_website.v_hubungi');
+        return view('FrontEnd.Info_website.v_hubungi',$data);
     }
 
 

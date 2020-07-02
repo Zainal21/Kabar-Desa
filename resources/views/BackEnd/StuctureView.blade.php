@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
   <meta name="csrf-token" content="{{ csrf_token() }}" />
-  <title>{{$title}}</title>
+  <title>{{$title ?? ''}}</title>
 
   <!-- General CSS Files -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -100,6 +100,12 @@
                   <a href="{{url('/konten/list')}}" class="nav-link"><i class="fas fa-th-large"></i> <span>Artikel / Konten</span></a>
                 </li>
                 @endif
+                @if (Auth::user()->role == 'Admin')
+                <li class="menu-header">Konten</li>
+                  <li class="nav-item dropdown">
+                    <a href="{{url('/konten/list')}}" class="nav-link"><i class="fas fa-th-large"></i> <span>Artikel / Konten</span></a>
+                  </li>
+                  @endif
             @if (Auth::user()->role == "Admin")
                 
                   <li class="nav-item dropdown">
@@ -120,7 +126,7 @@
                   @endif
             <div class="mt-4 mb-4 p-3 hide-sidebar-mini">
             <a href="{{url('/auth/logout')}}" class="btn btn-primary btn-lg btn-block btn-icon-split">
-                <i class="fas fa-logout"></i> Logout
+                <i class="fas fa-sign-out-alt"></i> Logout
               </a>
             </div>
         </aside>

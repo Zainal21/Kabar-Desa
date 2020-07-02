@@ -7,29 +7,10 @@
         <div class="section-header-breadcrumb">
           <div class="breadcrumb-item active"><a href="#">Home</a></div>
           <div class="breadcrumb-item"><a href="#">Artikel</a></div>
-    
         </div>
       </div>
-      {{-- <div class="row">
-        <div class="col">
-          <div class="alert alert-danger" role="alert">
-            Data Artikel tidak tersedia
-          </div>
-        </div>
-      </div> --}}
       <div class="row">
-        
-        
-        {{-- @if ($konten == "")
-        <div class="row">
-            <div class="col">
-              <div class="alert alert-danger" role="alert">
-                Data Kabar Desa tidak tersedia
-              </div>
-          </div>
-        </div>
-        @endif --}}
-        @foreach ($konten as $item)
+        @forelse ($konten as $item)
       
         <div class="col-12 col-sm-6 col-md-6 col-lg-3">
           <article class="article shadow">
@@ -45,7 +26,13 @@
         </article>
           
       </div>
-      @endforeach
+      @empty
+      <div class="col">
+        <div class="alert alert-danger" role="alert">
+          Data Artikel tidak tersedia
+        </div>
+      </div>
+      @endforelse
       </div>
     </section>
 @endsection

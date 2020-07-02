@@ -26,6 +26,7 @@
         <div class="row">
           <div class="col-12 col-sm-8 offset-sm-2 col-md-6 offset-md-3 col-lg-6 offset-lg-3 col-xl-4 offset-xl-4">
             <div class="login-brand">
+             <h3>Kabar Desa</h3>
               {{-- <img src="{{asset('BackEnd/assets/img/stisla-fill.svg')}}" alt="logo" width="100" class="shadow-light rounded-circle"> --}}
             </div>
 
@@ -66,6 +67,14 @@
         </div>
       </div>
     </section>
+    <footer class="main-footer">
+        <div class="footer-left">
+          Copyright &copy; 2018 <div class="bullet"></div> Design By <a href="#">Muhamad Zainal Arifin</a>
+        </div>
+        <div class="footer-right">
+          2.3.0
+        </div>
+      </footer>
   </div>
 
   <!-- General JS Scripts -->

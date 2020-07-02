@@ -12,13 +12,16 @@ class UMKMController extends Controller
 {
     public function index()
     {
-        return view('BackEnd.UMKM.v_umkm');
+        $data = [
+            'title' => 'Data Pengaduan'
+        ];
+        return view('BackEnd.UMKM.v_umkm',$data);
     }
     public function getUMKM(Request $requets)
     {
     $data = DB::table('umkm')
                 ->join('penduduk', 'penduduk.id','=','umkm.penduduk_id')
-                ->select('umkm.*', 'penduduk.NIK')
+                ->select('umkm.*', 'penduduk.*')
                 ->get();
         return DataTables::of($data)
         ->addColumn('action', function($data){

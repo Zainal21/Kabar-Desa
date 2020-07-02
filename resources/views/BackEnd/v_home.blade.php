@@ -11,15 +11,15 @@
           </div>
           <div class="card-stats-items">
             <div class="card-stats-item">
-              <div class="card-stats-item-count">24</div>
+            <div class="card-stats-item-count">{{$kebutuhan}}</div>
               <div class="card-stats-item-label">Kebutuhan</div>
             </div>
             <div class="card-stats-item">
-              <div class="card-stats-item-count">12</div>
+            <div class="card-stats-item-count">{{$pekerjaan}}</div>
               <div class="card-stats-item-label">Pekerjaan</div>
             </div>
             <div class="card-stats-item">
-              <div class="card-stats-item-count">23</div>
+              <div class="card-stats-item-count">{{$umkm}}</div>
               <div class="card-stats-item-label">UMKM Desa</div>
             </div>
           </div>
@@ -32,7 +32,7 @@
             <h4>Artikel / Konten</h4>
           </div>
           <div class="card-body">
-            59
+          {{$artikel}}
           </div>
         </div>
       </div>
@@ -43,14 +43,14 @@
           <canvas id="balance-chart" height="80"></canvas>
         </div>
         <div class="card-icon shadow-primary bg-primary">
-          <i class="fas fa-dollar-sign"></i>
+          <i class="fas fa-users"></i>
         </div>
         <div class="card-wrap">
           <div class="card-header">
-            <h4>Petugas / User</h4>
+            <h4>User</h4>
           </div>
           <div class="card-body">
-            24
+            {{$user}}
           </div>
         </div>
       </div>
@@ -61,14 +61,14 @@
           <canvas id="sales-chart" height="80"></canvas>
         </div>
         <div class="card-icon shadow-primary bg-primary">
-          <i class="fas fa-shopping-bag"></i>
+          <i class="fas fa-book"></i>
         </div>
         <div class="card-wrap">
           <div class="card-header">
-            <h4>Sales</h4>
+            <h4>Aspirasi Masyarakat Terjawab</h4>
           </div>
           <div class="card-body">
-            4,732
+            {{$aspirasi}}
           </div>
         </div>
       </div>
@@ -84,27 +84,14 @@
         <div class="profile-widget-name">{{Auth::user()->name}}<div class="text-muted d-inline font-weight-normal"><div class="slash"></div>{{Auth::user()->role}}</div></div>
         {{Auth::user()->deskripsi}}
         </div>
-        {{-- <div class="card-footer text-center"> 
-          <a href="#" class="btn btn-social-icon btn-facebook mr-1">
-            <i class="fab fa-facebook-f"></i>
-          </a>
-          <a href="#" class="btn btn-social-icon btn-twitter mr-1">
-            <i class="fab fa-twitter"></i>
-          </a>
-          <a href="#" class="btn btn-social-icon btn-github mr-1">
-            <i class="fab fa-github"></i>
-          </a>
-          <a href="#" class="btn btn-social-icon btn-instagram">
-            <i class="fab fa-instagram"></i>
-          </a>
-        </div> --}}
       </div>
     </div>
     <div class="col-6">
-      <div class="card profile-widget" style="background-color: blue">
+      <div class="card profile-widget bg-primary">
         <div class="card-body text-white">
-        <h6>Selamat Datang,<strong> {{Auth::user()->name}}</strong>,</h6>
-        <h3 style="font-weight: 700">Di Sistem Informasi Kabar Desa</h3>
+        <h6>Selamat Datang, <strong> {{Auth::user()->name}}</strong></h6>
+        <h5 style="font-weight: 700" class="my-4">Selamat Datang Di Aplikasi Kabar Desa</h5>
+        <p class="text-white" style="font-weight: 700">-- Sistem Pengaduan Masyarakat | Kabar Desa</p>
         </div>
       </div>
     </div>

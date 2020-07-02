@@ -17,7 +17,6 @@ use Illuminate\Support\Facades\Route;
 
 
 // ajax get data 
-
 Route::group(['prefix' => '/home'], function(){
   Route::get('/konten/list', 'KontenController@getKonten');
   Route::get('/petugas/list', 'UserController@getPetugas');
@@ -26,7 +25,8 @@ Route::group(['prefix' => '/home'], function(){
   Route::get('/kebutuhan/list', 'PendudukController@getkebutuhan');
   Route::get('/kabupaten/list', 'AlamatController@getkabupaten');
   Route::get('/list/pekerjaan', 'JobController@getpekerjaan');
-
+  Route::get('/list/umkm', 'UMKMController@getumkm');
+  Route::get('/aspirasi/detail-tanggapan/{slug}', 'AspirasiController@tanggapandetail');
 });
 
 // site website
@@ -47,18 +47,13 @@ Route::group(['prefix' => '/home'], function(){
 
 
 Route::group(['prefix' => '/home'], function(){
-
+  
   Route::group(['middleware' => 'auth'], function(){
     Route::get('/aspirasi/list', 'AspirasiController@index');
-    Route::get('/aspirasi/detail-tanggapan/{slug}', 'AspirasiController@tanggapandetail');
     Route::get('/user/edit/', 'UserController@edituser');
     Route::post('/user/update/{id}', 'UserController@updateuser');
   });
   Route::group(['middleware' => ['auth','rolecheck:Petugas']], function(){
-    // profile user
-  
-    
-    
     Route::get('/admin', 'DashboardController@index');
     // report // Belum FIxs
    
@@ -100,7 +95,6 @@ Route::group(['prefix' => '/home'], function(){
      Route::get('/pekerjaan/delete/{id}', 'JobController@destroy');
        // umkm
     Route::get('/umkm-desa', 'UMKMController@index');
-    Route::get('/list/umkm', 'UMKMController@getumkm');
     Route::get('/umkm-desa/add', 'UMKMController@create');
     Route::post('/umkm-desa/add', 'UMKMController@store');
     Route::get('/umkm-desa/edit/{id}', 'UMKMController@edit');

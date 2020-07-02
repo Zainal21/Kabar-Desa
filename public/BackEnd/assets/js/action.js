@@ -5,10 +5,12 @@ $(document).ready(function(){
     }
 });
 
+
+var _BASE_URL = 'http://127.0.0.1:8000';
 function saveImg(url, Fdata,to)
 {
   $.ajax({
-    url: url,
+    url: _BASE_URL + url,
     method:"POST",
     data:Fdata,
     dataType:"JSON",
@@ -37,7 +39,7 @@ function saveImg(url, Fdata,to)
 
 function FUpdateData(url,data,to){
   $.ajax({
-    url:url,
+    url:_BASE_URL+url,
     method:"POST",
     data:data,
     dataType:"JSON",
@@ -66,7 +68,7 @@ function FUpdateData(url,data,to){
 function SaveData(url,data,to)
 {
   $.ajax({
-    url:url,
+    url:_BASE_URL+url,
     data:data,
     method:"POST",
     success:function(data){
@@ -103,7 +105,7 @@ function deleteData(url,to)
       if(result.value){
        
         $.ajax({
-          url:url,
+          url:_BASE_URL+url,
           method:"GET",
           success:function(data){
             Swal({

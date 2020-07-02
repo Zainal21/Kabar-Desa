@@ -18,7 +18,7 @@
               <div class="card-stats-item-label">Pekerjaan</div>
             </div>
             <div class="card-stats-item">
-              <div class="card-stats-item-count">23</div>
+              <div class="card-stats-item-count">{{$umkm}}</div>
               <div class="card-stats-item-label">UMKM Desa</div>
             </div>
           </div>
@@ -42,7 +42,7 @@
           <canvas id="balance-chart" height="80"></canvas>
         </div>
         <div class="card-icon shadow-primary bg-primary">
-          <i class="fas fa-dollar-sign"></i>
+          <i class="fas fa-users"></i>
         </div>
         <div class="card-wrap">
           <div class="card-header">
@@ -60,14 +60,14 @@
           <canvas id="sales-chart" height="80"></canvas>
         </div>
         <div class="card-icon shadow-primary bg-primary">
-          <i class="fas fa-shopping-bag"></i>
+          <i class="fas fa-book"></i>
         </div>
         <div class="card-wrap">
           <div class="card-header">
-            <h4>Aspirasi Masyarakat</h4>
+            <h4>Aspirasi Masyarakat Terjawab</h4>
           </div>
           <div class="card-body">
-            40
+            {{$aspirasi}}
           </div>
         </div>
       </div>
@@ -81,33 +81,27 @@
           <div class="card-header-action">
           </div>
         </div>
-        <div class="card-body p-0">
+        <div class="card-body p-0 ml-2 mr-2">
           <div class="table-responsive table-invoice">
-            <table class="table table-striped">
-              <tr>
-                <th>NPWP Pemilik</th>
-                <th>Nama UMKM</th>
-                <th>Pemilik</th>
-                <th>Email</th>
-                <th>Modal Dasar</th>
-                <th>Modal Ditempatkan</th>
-                <th>Alamat</th>
-                <th>Action</th>
-              </tr>
-              <tr>
-                <td><a href="#">19.012.829.2-01.331</a></td>
-                <td class="font-weight-600">UMKM ZAIN SHOP</td>
-                <td>Muhamad Zainal Arifin</td>
-                <td>PenulisDuduk@gmail.com</td>
-                <td>24.000/000</td>
-                <td>20.000.000</td>
-                <td>Sidorejo, Kaliboto, Mojogedang, Karanganyar</td>
-                <td>
-                  <a href="#" class="btn btn-primary">Detail</a>
-                </td>
-              </tr>
-              
-            </table>
+            <div class="table-responsive">
+              <table class="table table-hover" id="tbl_umkm" width="100%">
+                <thead>
+                  <tr>
+                    <th scope="col">NPWP Usaha</th>
+                    <th scope="col">Nama UMKM</th>
+                    <th scope="col">Pengusaha</th>
+                    <th scope="col">Email Pemilik</th>
+                    <th scope="col">Modal Dasar</th>
+                    <th scope="col">Modal Ditempatkan</th>
+                    <th scope="col">Alamat</th>
+                    <th scope="col">Jenis Kelamin</th>
+                  </tr>
+                </thead>
+                <tbody>
+                
+                </tbody>
+              </table>
+          </div>
           </div>
         </div>
       </div>

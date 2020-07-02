@@ -3,12 +3,17 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\penduduk;
 use DataTables;
-use App\pekerjaan;
 use DB;
 use Validator;
+use App\Konten;
+use App\penduduk;
+use App\pekerjaan;
+use App\kebutuhan;
 use App\User;
+use App\UMKM;
+use App\pengaduan;
+
 use Illuminate\Support\Str;
 
 class DashboardController extends Controller
@@ -16,8 +21,15 @@ class DashboardController extends Controller
     public function index()
     {
        $data = [
-        'title' => 'Dashboard',
-     
+        'title' => 'Dashboard | Kabar Desa',
+        'artikel' => konten::all()->count(),
+        'pekerjaan' => pekerjaan::all()->count(),
+        'kebutuhan' => kebutuhan::all()->count(),
+        'user' => User::all()->count(),
+        'news' => Konten::latest()->paginate(1),
+        'umkm' => umkm::all()->count(),
+        'aspirasi'=> pengaduan::where(['status' => 'Terjawab'])->count()
+    
        ];
         return view('BackEnd.v_home',$data);
     }

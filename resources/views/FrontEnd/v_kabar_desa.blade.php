@@ -12,19 +12,13 @@
       </div>
   
       
-          @if (!$kabardesa)
+          {{-- @empty($kabardesa)
           <div class="row">
-            <div class="col">
-              <div class="alert alert-danger" role="alert">
-                Data Kabar Desa tidak tersedia
-              </div>
-            </div>
+          
           </div>
-          @endif
-            
-       
-      <div class="row">
-        @foreach ($kabardesa as $item)
+          @endempty --}}
+       <div class="row">
+        @forelse ($kabardesa as $item)
         <div class="col-md-3 mx-2">
           <article class="article shadow">
                 
@@ -39,7 +33,13 @@
                 </div>
               
           </div>
-          @endforeach
+        @empty
+        <div class="col">
+          <div class="alert alert-danger" role="alert">
+            Data Kabar Desa tidak tersedia
+          </div>
         </div>
+        @endforelse
+       </div>
     </section>
 @endsection

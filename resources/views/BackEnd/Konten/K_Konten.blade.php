@@ -21,8 +21,8 @@
               <tr>
                 <th scope="col">Judul</th>
                 <th scope="col">Author</th>
-                <th scope="col">Status</th>
                 <th scope="col">kategori</th>
+                <th scope="col">Status</th>
                 <th scope="col">Action</th>
               </tr>
             </thead>

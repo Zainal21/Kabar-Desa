@@ -1,4 +1,6 @@
 $(document).ready(function(){
+var _BASE_URL = 'http://localhost:8000'
+  $('#tbl_aspr').DataTable()
   $('#OP_User').select2();
   $('#tbl_penduduk2').DataTable({
     processing:true,
@@ -47,4 +49,29 @@ $(document).ready(function(){
     });
  
 
+// umkm
+$('#tbl_umkm').DataTable({
+  processing:true,
+  serverSide:true,
+
+  ajax:{
+    url:"/home/list/umkm",
+    method:"GET",
+  },
+  columns:[
+    {data:'npwb_usaha',name:'npwb_usaha'},
+    {data:'nama_umkm',name:'nama_umkm'},
+    {data:'Nama_penduduk',name:'Nama_penduduk'},
+    {data:'email_pemilik',name:'email_pemilik'},
+    {data:'modal_dasar',name:'modal_dasar'},
+    {data:'modal_ditampatkan',name:'modal_ditampatkan'},
+    {data:'alamat',name:'alamat'},
+    {data:'jenis_kelamin',name:'jenis_kelamin'},
+   
+  ],
 })
+
+
+
+});
+

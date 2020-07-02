@@ -15,34 +15,21 @@
     </div>
     <div class="card-body">
          <div class="table-responsive">
-          <table class="table table-hover">
+          <table class="table table-hover" id="tbl_umkm" width="100%">
             <thead>
               <tr>
-                <th scope="col">#</th>
-                <th scope="col">First</th>
-                <th scope="col">Last</th>
-                <th scope="col">Handle</th>
+                <th scope="col">NPWP Usaha</th>
+                <th scope="col">Nama UMKM</th>
+                <th scope="col">Pengusaha</th>
+                <th scope="col">Email Pemilik</th>
+                <th scope="col">Modal Dasar</th>
+                <th scope="col">Modal Ditempatkan</th>
+                <th scope="col">Alamat</th>
+                <th scope="col">Jenis Kelamin</th>
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <th scope="row">1</th>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>@mdo</td>
-              </tr>
-              <tr>
-                <th scope="row">2</th>
-                <td>Jacob</td>
-                <td>Thornton</td>
-                <td>@fat</td>
-              </tr>
-              <tr>
-                <th scope="row">3</th>
-                <td>Larry</td>
-                <td>the Bird</td>
-                <td>@twitter</td>
-              </tr>
+            
             </tbody>
           </table>
       </div>

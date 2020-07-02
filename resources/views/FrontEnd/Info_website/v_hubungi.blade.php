@@ -15,34 +15,32 @@
     </div>
     <div class="card-body">
          <div class="table-responsive">
-          <table class="table table-hover">
+          <table class="table table-hover" id="tbl_aspr" width="100%">
             <thead>
               <tr>
-                <th scope="col">#</th>
-                <th scope="col">First</th>
-                <th scope="col">Last</th>
-                <th scope="col">Handle</th>
+                <th scope="col">No</th>
+                <th scope="col">Nama</th>
+                <th scope="col">Aspirasi</th>
+                <th scope="col">Status</th>
               </tr>
             </thead>
+          
             <tbody>
+              @foreach ($pengaduan as $item)
               <tr>
-                <th scope="row">1</th>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>@mdo</td>
-              </tr>
-              <tr>
-                <th scope="row">2</th>
-                <td>Jacob</td>
-                <td>Thornton</td>
-                <td>@fat</td>
-              </tr>
-              <tr>
-                <th scope="row">3</th>
-                <td>Larry</td>
-                <td>the Bird</td>
-                <td>@twitter</td>
-              </tr>
+                <td>{{$loop->iteration}}</td>
+                <td>{{$item->Nama_penduduk}}</td>
+                <td>{{$item->pengaduan}}</td>
+                <td><?= $item->status == 'Terjawab' ? '<button type="button" class="btn btn-success"><span class="badge badge-light"></span>
+                  <i class="fas  fa-check-circle"></i>
+                </button>' : '<button type="button" class="btn btn-danger"><span class="badge badge-light"></span>
+                  <i class="fas  fa-minus-circle"></i>
+                </button>' ?></td>
+                <td>
+                  
+              
+                
+              @endforeach
             </tbody>
           </table>
       </div>
