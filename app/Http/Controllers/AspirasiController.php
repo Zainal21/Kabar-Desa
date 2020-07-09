@@ -60,7 +60,8 @@ class AspirasiController extends Controller
                     'pengaduan' => $request->pengaduan,
                     'foto' => $request->file('foto')->store('public/upload/pengaduan'),
                     'status' => 'Belum Terjawab',
-                    'slug' => str::slug($request->pengaduan)
+                    'slug' => str::slug($request->pengaduan),
+                    'user_id' => Auth::user()->id
                     ]);
                 
             return response()->json(['success' =>'Pengaduan Berhasil Dikirim']);
@@ -107,7 +108,7 @@ class AspirasiController extends Controller
         if($error->fails()){
             return response()->json(['error' => $error->errors()->all()]);
         }else{
-            tanggapan::create([
+           $tanggapan =  tanggapan::create([
                 'pengaduan_id' => $request->id,
                 'Tanggapan' => $request->Tanggapan,
                 'petugas' => Auth::user()->name,
@@ -116,16 +117,16 @@ class AspirasiController extends Controller
                'status' => 'Terjawab'
            ]);
           
-           $pengaduan_user = pengaduan::with(['user'])->find(Auth::user()->id);
+           $pengaduan_user = pengaduan::with(['user'])->find($tanggapan->pengaduan_id);
         // dd($pengaduan);
-          Mail::to($pengaduan_user)
+          Mail::to($pengaduan_user->user)
           ->send(new notif($pengaduan));
              return response()->json(['success' => 'Data Pengaduan Berhasil Dijawab']);
         }
     }
     public function tanggapandetail($slug)
     {
-        $data = [
+        $this->vars = [
             'items' => DB::table('tanggapan')
                         ->join('pengaduan', 'pengaduan.id' ,'=','tanggapan.pengaduan_id') 
                         ->where(['slug' => $slug])
@@ -133,7 +134,7 @@ class AspirasiController extends Controller
                         ->get(),
                 'title' => 'Detail Tanggapan'
         ];
-        return view('BackEnd.Aspirasi.A_Details_Tanggapan',$data);
+        return view('BackEnd.Aspirasi.A_Details_Tanggapan',$this->vars);
     }
 
   
