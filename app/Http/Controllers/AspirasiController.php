@@ -11,6 +11,9 @@ use DB;
 use Illuminate\Support\Str;
 use App\tanggapan;
 use Auth;
+use Mail;
+use App\Mail\notif;
+
 class AspirasiController extends Controller
 {
     public function index()
@@ -114,7 +117,8 @@ class AspirasiController extends Controller
            ]);
           
         // dd($pengaduan);
-          
+          Mail::to($pengaduan)
+          ->send(new notif($pengaduan));
              return response()->json(['success' => 'Data Pengaduan Berhasil Dijawab']);
         }
     }
