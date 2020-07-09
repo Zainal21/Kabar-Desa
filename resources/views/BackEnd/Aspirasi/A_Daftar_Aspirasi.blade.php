@@ -44,7 +44,9 @@
                   <a href="{{url('home/aspirasi/detail-tanggapan/'. $item->slug)}}" class="btn btn-outline-info btn-sm mr-2" ><i class="fas fa-comment"></i></a>
                   @endif
                   @if (Auth::user()->role == "Admin" && "Petugas")   
-                  <a href="{{url('/home/aspirasi/tulis-tanggapan/'.$item->slug)}}" class="btn btn-outline-warning btn-sm mr-2" ><i class="fas fa-pen"></i></a></td>
+                    @if (!$item->status == 'Terjawab')
+                    <a href="{{url('/home/aspirasi/tulis-tanggapan/'.$item->slug)}}" class="btn btn-outline-warning btn-sm mr-2" ><i class="fas fa-pen"></i></a></td>
+                    @endif
                   @endif
               </tr>
               @endforeach

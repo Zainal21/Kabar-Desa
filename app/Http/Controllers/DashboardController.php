@@ -22,12 +22,12 @@ class DashboardController extends Controller
     {
        $this->vars=
         [
-        'title' => 'Dashboard | Kabar Desa',
+            'title' => 'Dashboard | Kabar Desa',
             'artikel' => konten::all()->count(),
             'pekerjaan' => pekerjaan::all()->count(),
             'kebutuhan' => kebutuhan::all()->count(),
             'user' => User::all()->count(),
-            'news' => Konten::latest()->paginate(1),
+            'news' => Konten::where(['status' => 'Publish'])->latest()->paginate(1),
             'umkm' => umkm::all()->count(),
             'aspirasi'=> pengaduan::where(['status' => 'Terjawab'])->count()  
        ];

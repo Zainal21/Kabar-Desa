@@ -118,9 +118,10 @@ class AspirasiController extends Controller
            ]);
           
            $pengaduan_user = pengaduan::with(['user'])->find($tanggapan->pengaduan_id);
-        // dd($pengaduan);
-          Mail::to($pengaduan_user->user)
-          ->send(new notif($pengaduan));
+        // dd($pengaduan);  
+        // // dd($pengaduan_user);
+        //   Mail::to($pengaduan_user->user)
+        //   ->send(new notif($pengaduan));
              return response()->json(['success' => 'Data Pengaduan Berhasil Dijawab']);
         }
     }

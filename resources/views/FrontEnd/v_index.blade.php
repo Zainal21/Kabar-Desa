@@ -106,7 +106,7 @@
         </div>
       </div>
     </div>
-    @foreach ($news as $item)
+    @forelse ($news as $item)
     <div class="col-md-4">
       <div class="card card-hero">
         <div class="card-header">
@@ -132,9 +132,24 @@
         </div>
       </div>
     </div>
-    @endforeach
+    @empty      
+    <div class="col-md-4">
+      <div class="card card-hero">
+        <div class="card-header">
+          <div class="card-icon">
+            <i class="far fa-question-circle"></i>
+          </div>
+          {{-- <h4>14</h4> --}}
+          <div class="card-description"><h4>Berita Terbaru</h4></div>
+        </div>
+        <div class="card-body p-0">
+          <div class="tickets-list">
+            <div class="alert alert-danger">Tidak ada berita Terbaru</div>  
+          </div>
+        </div>
+      </div>
+    </div>
+    @endforelse 
   </div>
-  
-  
 </section>
 @endsection
