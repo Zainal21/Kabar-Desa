@@ -18,22 +18,22 @@ class AspirasiController extends Controller
 {
     public function index()
     {
-        $data = [
+        $this->vars = [
           'pengaduan' => DB::table('pengaduan')
                         ->join('penduduk', 'penduduk.id', '=', 'pengaduan.penduduk_id')
                         ->select('pengaduan.*','penduduk.*')
                         ->get(),
             'title' => 'Data Pengaduan' 
         ];
-        return view('BackEnd.Aspirasi.A_Daftar_Aspirasi',$data);
+        return view('BackEnd.Aspirasi.A_Daftar_Aspirasi',$this->vars);
     }
     public function create()
     {
-        $data = [
+        $this->vars = [
             'penduduk' => penduduk::all(),
             'title' => 'Buat Aspirasi'
         ];
-        return view('BackEnd.Aspirasi.A_Aspirasi',$data);
+        return view('BackEnd.Aspirasi.A_Aspirasi',$this->vars);
     }
 
     Public function store(Request $request)
@@ -71,7 +71,7 @@ class AspirasiController extends Controller
 
     public function show($slug)
     {
-      $data = [
+     $this->vars = [
           'items' =>  DB::table('pengaduan')
                         ->join('penduduk', 'penduduk.id' ,'=','pengaduan.penduduk_id') 
                         ->where(['slug' => $slug])
@@ -81,12 +81,12 @@ class AspirasiController extends Controller
       ];
         
         // dd($data);
-        return view('BackEnd.Aspirasi.A_Details',$data);
+        return view('BackEnd.Aspirasi.A_Details',$this->vars);
     }
 
     public function details($slug)
     {
-        $data = [
+        $this->vars = [
             'items' =>  DB::table('pengaduan')
                     ->join('penduduk', 'penduduk.id' ,'=','pengaduan.penduduk_id') 
                     ->where(['slug' => $slug])
@@ -95,7 +95,7 @@ class AspirasiController extends Controller
             'title' => 'Detail Pengaduan'
                 
         ];
-        return view('BackEnd.Aspirasi.A_Tanggapan',$data);
+        return view('BackEnd.Aspirasi.A_Tanggapan',$this->vars);
     }
 
     public function send(Request $request, $slug)
@@ -116,8 +116,9 @@ class AspirasiController extends Controller
                'status' => 'Terjawab'
            ]);
           
+           $pengaduan_user = pengaduan::with(['user'])->find(Auth::user()->id);
         // dd($pengaduan);
-          Mail::to($pengaduan)
+          Mail::to($pengaduan_user)
           ->send(new notif($pengaduan));
              return response()->json(['success' => 'Data Pengaduan Berhasil Dijawab']);
         }

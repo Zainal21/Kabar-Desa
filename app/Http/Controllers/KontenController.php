@@ -32,11 +32,11 @@ class KontenController extends Controller
     }
     public function create()
     {
-        $var = 
+        $this->vars = 
         [
             'title' => 'Tambah Kebutuhan',
         ];
-        return view('BackEnd.Konten.K_Tambah',$var);
+        return view('BackEnd.Konten.K_Tambah',$this->vars);
     }
     public function store(Request $request)
     {
@@ -64,7 +64,7 @@ class KontenController extends Controller
     }
     public function edit($id)
     {
-        $data = [
+        $this->vars = [
             'konten' => Konten::find($id),
             'title' => 'Edit Konten',
             'kategori' => [
@@ -77,7 +77,7 @@ class KontenController extends Controller
                 'Pending'
             ]
         ];
-        return view('BackEnd.Konten.K_edit',$data);
+        return view('BackEnd.Konten.K_edit',$this->vars);
     }
     public function update(Request $request,$id)
     {

@@ -59,8 +59,7 @@ class UserController extends Controller
         $rule = [
             'email' => 'required',
             'name' => 'required',
-            'password' => 'required',
-           
+            'password' => 'required',    
         ];
         $error = Validator::make($request->all(),$rule);
         if($error->fails()){

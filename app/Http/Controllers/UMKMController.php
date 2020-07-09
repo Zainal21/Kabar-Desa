@@ -12,10 +12,10 @@ class UMKMController extends Controller
 {
     public function index()
     {
-        $data = [
+        $this->vars = [
             'title' => 'Data Pengaduan'
         ];
-        return view('BackEnd.UMKM.v_umkm',$data);
+        return view('BackEnd.UMKM.v_umkm',$this->vars);
     }
     public function getUMKM(Request $requets)
     {

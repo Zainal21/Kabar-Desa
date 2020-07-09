@@ -11,11 +11,11 @@ class PendudukController extends Controller
 {
     public function kebutuhan()
     {
-        $data = [
+        $this->vars = [
             'kabupaten' => \App\kabupaten::all(),
             'title' => 'Master Kebutuhan',
         ];
-        return view('BackEnd.Penduduk.P_Kebutuhan',$data);
+        return view('BackEnd.Penduduk.P_Kebutuhan',$this->vars);
     }
     public function getkebutuhan(Request $request)
     {
