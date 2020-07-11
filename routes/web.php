@@ -18,14 +18,14 @@ use Illuminate\Support\Facades\Route;
 
 // ajax get data 
 Route::group(['prefix' => '/home'], function(){
-  Route::get('/konten/list', 'KontenController@getKonten');
-  Route::get('/petugas/list', 'UserController@getPetugas');
-  Route::get('/provinsi/list', 'AlamatController@getprovinsi');
-  Route::get('/penduduk/list', 'DashboardController@getPenduduk');
-  Route::get('/kebutuhan/list', 'PendudukController@getkebutuhan');
-  Route::get('/kabupaten/list', 'AlamatController@getkabupaten');
-  Route::get('/list/pekerjaan', 'JobController@getpekerjaan');
-  Route::get('/list/umkm', 'UMKMController@getumkm');
+  Route::get('/konten/list', 'DataTableController@getKonten');
+  Route::get('/petugas/list', 'DataTableController@getPetugas');
+  Route::get('/provinsi/list', 'DataTableController@getprovinsi');
+  Route::get('/penduduk/list', 'DataTableController@getPenduduk');
+  Route::get('/kebutuhan/list', 'DataTableController@getkebutuhan');
+  Route::get('/kabupaten/list', 'DataTableController@getkabupaten');
+  Route::get('/list/pekerjaan', 'DataTableController@getpekerjaan');
+  Route::get('/list/umkm', 'DataTableController@getumkm');
   Route::get('/aspirasi/detail-tanggapan/{slug}', 'AspirasiController@tanggapandetail');
 });
 

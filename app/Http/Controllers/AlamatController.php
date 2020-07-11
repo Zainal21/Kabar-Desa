@@ -18,18 +18,7 @@ class AlamatController extends Controller
         return view('BackEnd.Helper.Provinsi',$this->vars);
     }
 
-    public function getprovinsi(Request $request)
-    {
-        if($request->ajax()){
-            $data = provinsi::all();
-            return DataTables::of($data)
-            ->addColumn('action', function($data){
-                $btn = '<a href="/home/provinsi/edit/'.$data->id.'" class="btn btn-outline-primary"><i class="fas fa-edit"></i></a><a href="/home/provinsi/delete/'.$data->id.'" id="'.$data->id.'" class="btn btn-outline-danger ml-2 btn-provinsi-delete"><i class="fas fa-trash"></i></a>';
-                return $btn;
-            })->rawColumns(['action'])
-            ->make(true);
-        }
-    }
+  
 
     public function kabupaten()
     {
@@ -79,20 +68,7 @@ class AlamatController extends Controller
             return response()->json(['success' => 'Data Kabupaten berhasil mengubah ke database']);
         }
     }
-    public function getkabupaten(Request $request)
-    {
-        if($request->ajax()){
-            $data = DB::table('kabupaten')
-                        ->join('provinsi', 'provinsi.id', '=', 'kabupaten.provinsi_id')
-                        ->select('kabupaten.*','provinsi.nama_provinsi')
-                        ->get();
-            return DataTables::of($data)
-            ->addColumn('action', function($data){
-                $btn = '<a href="/home/kabupaten/edit/'.$data->id.'" class="btn btn-outline-primary btn-edit-kabupaten" id="'.$data->id.'"><i class="fas fa-edit"></i></a><a href="/home/kabupaten/delete/'.$data->id.'" class="btn btn-outline-danger  btn-kabupaten-delete ml-2" id="'.$data->id.'"><i class="fas fa-trash"></i></a>';
-                return $btn;
-            })->rawColumns(['action'])->make(true);
-        }
-    }
+   
 
     public function kabupatendelete($id)
     {

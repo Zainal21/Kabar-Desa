@@ -15,19 +15,7 @@ class JobController extends Controller
           ];
         return view('BackEnd.Penduduk.P_Pekerjaan', $this->vars);
     }
-    public function getpekerjaan(Request $request)
-    {
-        
-        if($request->ajax()){
-            $data = pekerjaan::all();
-            return DataTables::of($data)
-            ->addColumn('action', function($data){
-                $btn = '<a href="/home/pekerjaan/delete/'.$data->id.'" class="btn btn-outline-danger ml-2 btn-pekerjaan-delete" id="'.$data->id.'"><i class="fas fa-trash"></i></a>';
-                return $btn;
-            })->rawColumns(['action'])
-            ->make(true);
-        }
-    }
+  
     public function destroy($id)
     {
         pekerjaan::destroy($id);

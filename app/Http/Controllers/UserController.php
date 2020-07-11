@@ -9,18 +9,7 @@ use Validator;
 use Illuminate\Support\Str;
 class UserController extends Controller
 {
-    public function getpetugas(Request $request)
-    {
-        if($request->ajax()){
-            $data = User::all();
-            return DataTables::of($data)
-            ->addColumn('action', function($data){
-                $btn = '<a href="/home/petugas/edit/'.$data->id.'" class="btn btn-outline-primary"><i class="fas fa-edit"></i></a><a href="/home/petugas/delete/'.$data->id.'" class="btn btn-outline-danger ml-2 btn-user-delete" id="'.$data->id.'"><i class="fas fa-trash"></i></a>';
-                return $btn;
-            })->rawColumns(['action'])
-            ->make(true);
-        }
-    }
+   
     public function store(Request $request)
     {
         $rule = [

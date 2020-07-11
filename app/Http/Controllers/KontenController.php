@@ -18,18 +18,7 @@ class KontenController extends Controller
         ];
         return view('BackEnd.Konten.K_Konten',$var);
     }
-    public function getKonten(Request $request)
-    {
-        if($request->ajax()){
-            $data = Konten::all();
-            return DataTables::of($data)
-            ->addColumn('action', function($data){
-                $btn = '<a href="/konten/edit/'.$data->id.'" class="btn btn-outline-primary"><i class="fas fa-edit"></i></a><a href="konten/delete/'.$data->id.'" class="btn btn-outline-danger ml-2 btn-hapus-konten" id="'.$data->id.'"><i class="fas fa-trash"></i></a>';
-                return $btn;
-            })->rawColumns(['action'])->make(true);
-            
-        }
-    }
+
     public function create()
     {
         $this->vars = 

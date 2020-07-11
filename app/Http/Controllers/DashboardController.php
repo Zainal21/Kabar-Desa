@@ -47,22 +47,7 @@ class DashboardController extends Controller
            ];
         return view('BackEnd.Penduduk.P_Penduduk',$this->vars);
     }
-    public function getPenduduk(Request $request)
-    {
-        if($request->ajax())
-        {
-            $data = DB::table('penduduk')
-                    ->join('pekerjaan','pekerjaan.id' ,'=', 'penduduk.pekerjaan_id')
-                    ->select('penduduk.*', 'pekerjaan.nama_pekerjaan')
-                    ->get();
-                return DataTables::of($data)
-                ->addColumn('action', function($data){
-                    $btn = '<a href="/home/penduduk/edit/'.$data->id.'" class="btn btn-sm btn-outline-primary"><i class="fas fa-edit"></i></a><a href="/home/penduduk/delete/'.$data->id.'" class="btn btn-sm  btn-outline-danger btn-penduduk-hapus" id="'.$data->id.'"><i class="fas fa-trash"></i></a>';
-                    return $btn;
-                })->rawColumns(['action'])
-                ->make(true);
-        }
-    }
+  
 
     public function creatependuduk()
     {

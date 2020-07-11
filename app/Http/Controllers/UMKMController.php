@@ -17,19 +17,7 @@ class UMKMController extends Controller
         ];
         return view('BackEnd.UMKM.v_umkm',$this->vars);
     }
-    public function getUMKM(Request $requets)
-    {
-    $data = DB::table('umkm')
-                ->join('penduduk', 'penduduk.id','=','umkm.penduduk_id')
-                ->select('umkm.*', 'penduduk.*')
-                ->get();
-        return DataTables::of($data)
-        ->addColumn('action', function($data){
-            $btn = '<a href="/home/umkm-desa/edit/'.$data->id.'" class="btn btn-outline-primary btn-sm mr-2" ><i class="fas fa-edit"></i></a><a href="/home/umkm-desa/delete/'.$data->id.'" class="btn btn-outline-danger btn-sm btn-umkm-delete" id="'.$data->id.'" ><i class="fas fa-trash"></i></a>';
-            return $btn;
-        })->rawColumns(['action'])
-        ->make(true);
-    }
+
     public function create(Request $requets)
     {
         $data = [
