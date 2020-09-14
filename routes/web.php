@@ -18,12 +18,12 @@ use Illuminate\Support\Facades\Route;
 
 // ajax get data 
 Route::group(['prefix' => '/home'], function(){
-  Route::get('/konten/list', 'DataTableController@getKonten');
-  Route::get('/petugas/list', 'DataTableController@getPetugas');
   Route::get('/provinsi/list', 'DataTableController@getprovinsi');
-  Route::get('/penduduk/list', 'DataTableController@getPenduduk');
-  Route::get('/kebutuhan/list', 'DataTableController@getkebutuhan');
   Route::get('/kabupaten/list', 'DataTableController@getkabupaten');
+  Route::get('/penduduk/list', 'DataTableController@getPenduduk');
+  Route::get('/petugas/list', 'DataTableController@getPetugas');
+  Route::get('/kebutuhan/list', 'DataTableController@getkebutuhan');
+  Route::get('/konten/list', 'DataTableController@getKonten');
   Route::get('/list/pekerjaan', 'DataTableController@getpekerjaan');
   Route::get('/list/umkm', 'DataTableController@getumkm');
   Route::get('/aspirasi/detail-tanggapan/{slug}', 'AspirasiController@tanggapandetail');
@@ -40,6 +40,9 @@ Route::group(['prefix' => '/home'], function(){
     Route::get('/news/artikel-desa', 'HomeController@artikel');
     Route::get('/about/informasi-web-desa', 'HomeController@informasi');
     Route::get('/about/hubungi-web-desa', 'HomeController@hubungi');
+
+
+    // authentication
     Route::get('/auth/login', 'AuthController@login')->name('login');
     Route::post('/auth/login', 'AuthController@proccess');
     Route::get('/auth/logout', 'AuthController@logout');
@@ -55,8 +58,9 @@ Route::group(['prefix' => '/home'], function(){
   });
   Route::group(['middleware' => ['auth','rolecheck:Petugas']], function(){
     Route::get('/admin', 'DashboardController@index');
+
+
     // report // Belum FIxs
-   
     // Route::get('/report/kebutuhan', 'ReportController@kebutuhan');
     // Route::get('/report/aspirasi', 'ReportController@aspirasi');
     // aspirasi
@@ -84,6 +88,7 @@ Route::group(['prefix' => '/home'], function(){
      Route::post('/provinsi/update/{id}', 'AlamatController@provinsiupdate');
      Route::get('/provinsi/delete/{id}', 'AlamatController@provinsidestroy');
      // kabupaten
+
      Route::get('/kabupaten', 'AlamatController@kabupaten');
      Route::post('/kabupaten/add', 'AlamatController@kabupatenstore');
      Route::get('/kabupaten/delete/{id}', 'AlamatController@kabupatendelete');
