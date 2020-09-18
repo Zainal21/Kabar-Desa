@@ -10,6 +10,7 @@ use App\pekerjaan;
 use App\penduduk;
 use App\kebutuhan;
 use App\UMKM;
+use DB;
 
 class DataTableController extends Controller
 {

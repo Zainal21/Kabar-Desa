@@ -85,8 +85,8 @@ $(function() {
 
   var sidebar_dropdown = function() {
     if($(".main-sidebar").length) {
-      $(".main-sidebar").niceScroll(sidebar_nicescroll_opts);
-      sidebar_nicescroll = $(".main-sidebar").getNiceScroll();
+      // $(".main-sidebar").niceScroll(sidebar_nicescroll_opts);
+      // sidebar_nicescroll = $(".main-sidebar").getNiceScroll();
 
       $(".main-sidebar .sidebar-menu li a.has-dropdown").off('click').on('click', function() {
         var me     = $(this);
@@ -320,12 +320,12 @@ $(function() {
   });
 
   // tooltip
-  $("[data-toggle='tooltip']").tooltip();
+  // $("[data-toggle='tooltip']").tooltip();
 
   // popover
-  $('[data-toggle="popover"]').popover({
-    container: 'body'
-  });
+  // $('[data-toggle="popover"]').popover({
+  //   container: 'body'
+  // });
 
   // Select2
   if(jQuery().select2) {
