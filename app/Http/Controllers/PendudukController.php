@@ -11,11 +11,10 @@ class PendudukController extends Controller
 {
     public function kebutuhan()
     {
-        $this->vars = [
-            'kabupaten' => \App\kabupaten::all(),
+        return view('BackEnd.Penduduk.P_Kebutuhan',[
             'title' => 'Master Kebutuhan',
-        ];
-        return view('BackEnd.Penduduk.P_Kebutuhan',$this->vars);
+            'kabupaten' => \App\kabupaten::all(),
+        ]);
     }
 
     public function savekebutuhan(Request $request)
@@ -40,11 +39,5 @@ class PendudukController extends Controller
     {
         kebutuhan::destroy($id);
         return response()->json(['success' => 'Data kebutuhan berhasil dihapus dari database']);
-    }
-
- 
-
-
-
-    
+    }    
 }

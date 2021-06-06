@@ -13,26 +13,20 @@ class KontenController extends Controller
 {
     public function index()
     {
-        $var = [
-            'title' => 'Master Konten',
-        ];
-        return view('BackEnd.Konten.K_Konten',$var);
+        return view('BackEnd.Konten.K_Konten',['title' => 'Master Konten',]);
     }
 
     public function create()
     {
-        $this->vars = 
-        [
-            'title' => 'Tambah Kebutuhan',
-        ];
-        return view('BackEnd.Konten.K_Tambah',$this->vars);
+        return view('BackEnd.Konten.K_Tambah',['title' => 'Tambah Kebutuhan',]);
     }
     public function store(Request $request)
     {
        $rule = [
            'judul' => 'required',
            'author' => 'required',
-           
+           'isi' => 'required',
+           'kategori'=> 'required'
        ];
        $error = Validator::make($request->all(),$rule);
        if($error->fails()){
@@ -53,7 +47,7 @@ class KontenController extends Controller
     }
     public function edit($id)
     {
-        $this->vars = [
+        $data = [
             'konten' => Konten::find($id),
             'title' => 'Edit Konten',
             'kategori' => [
@@ -66,14 +60,13 @@ class KontenController extends Controller
                 'Pending'
             ]
         ];
-        return view('BackEnd.Konten.K_edit',$this->vars);
+        return view('BackEnd.Konten.K_edit',$data);
     }
     public function update(Request $request,$id)
     {
         $rule = [
             'judul' => 'required',
             'author' => 'required',
-            
         ];
         $error = Validator::make($request->all(),$rule);
         if($error->fails()){
@@ -91,7 +84,7 @@ class KontenController extends Controller
                 return response()->json(['success' => 'Berhasil mengubah konten dari database']);
         }
         $file = $request->file('image')->store('public/upload/konten');
-            $k = Konten::where(['id' => $request->id])->update([
+        Konten::where(['id' => $request->id])->update([
                 'author' => $request->author,
                 'kategori' => $request->kategori,
                 'gambar' => $file,
@@ -99,8 +92,8 @@ class KontenController extends Controller
                 'status' => $request->status,
                 'judul' => $request->judul,
                 'slug' => str::slug($request->judul)
-                ]);
-                return response()->json(['success' => 'Berhasil mengubah konten dari database']);
+         ]);
+        return response()->json(['success' => 'Berhasil mengubah konten dari database']);
     }
     public function destroy($id)
     {

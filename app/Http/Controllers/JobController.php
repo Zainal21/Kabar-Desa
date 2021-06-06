@@ -10,10 +10,7 @@ class JobController extends Controller
 {
     public function index()
     {
-        $this->vras = [
-            'title' => 'Master Pekerjaan'
-          ];
-        return view('BackEnd.Penduduk.P_Pekerjaan', $this->vars);
+        return view('BackEnd.Penduduk.P_Pekerjaan',['title' => 'Master Pekerjaan']);
     }
   
     public function destroy($id)

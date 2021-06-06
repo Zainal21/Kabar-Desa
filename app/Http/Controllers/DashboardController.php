@@ -20,7 +20,7 @@ class DashboardController extends Controller
 {
     public function index()
     {
-       $this->vars=
+       $data =
         [
             'title' => 'Dashboard | Kabar Desa',
             'artikel' => konten::all()->count(),
@@ -31,32 +31,32 @@ class DashboardController extends Controller
             'umkm' => umkm::all()->count(),
             'aspirasi'=> pengaduan::where(['status' => 'Terjawab'])->count()  
        ];
-        return view('BackEnd.v_home',$this->vars);
+        return view('BackEnd.v_home',$data );
     }
     public function petugas()
     {
-        $this->vars = [
+        $data  = [
             'title' => 'Master Petugas',
            ];
-        return view('BackEnd.Petugas.P_Petugas',$this->vars);
+        return view('BackEnd.Petugas.P_Petugas',$data );
     }
     public function  penduduk()
     {
-        $this->vars = [
+        $data  = [
             'title' => 'Master Penduduk',
            ];
-        return view('BackEnd.Penduduk.P_Penduduk',$this->vars);
+        return view('BackEnd.Penduduk.P_Penduduk',$data );
     }
   
 
     public function creatependuduk()
     {
-        $this->vars = 
+        $data  = 
         [
             'title' => 'Tambah Penduduk',
             'pekerjaan' =>pekerjaan::all()
         ];
-        return view('BackEnd.Penduduk.v_create_penduduk',$this->vars);
+        return view('BackEnd.Penduduk.v_create_penduduk',$data );
     }
     public function storependuduk(Request $request)
     {
@@ -102,13 +102,13 @@ class DashboardController extends Controller
     }
    public function editpenduduk($id)
    {
-    $this->vars = 
+    $data  = 
     [
         'title' => 'Edit Penduduk',
         'pekerjaan' =>pekerjaan::all(),
         'penduduk' => penduduk::find($id)
     ];
-        return view('BackEnd.Penduduk.v_edit',$this->vars);
+        return view('BackEnd.Penduduk.v_edit',$data );
    }
    public function updatedatapenduduk(Request $request,$id)
    {

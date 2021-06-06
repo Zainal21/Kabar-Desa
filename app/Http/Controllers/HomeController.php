@@ -15,8 +15,7 @@ class HomeController extends Controller
 {
     public function index()
     {
-        $this->vars = [
-   
+        return view('FrontEnd.v_index',[
             'title' => 'Home',
             'artikel' => konten::all()->count(),
             'pekerjaan' => pekerjaan::all()->count(),
@@ -25,93 +24,66 @@ class HomeController extends Controller
             'news' => Konten::where(['status' => 'Publish'])->latest()->paginate(1),
             'umkm' => umkm::all()->count(),
             'aspirasi'=> pengaduan::where(['status' => 'Terjawab'])->count()
-        ];
-        return view('FrontEnd.v_index',$this->vars);
+        ]);
     }
     public function kebutuhan()
     {
-        $this->vars = [
-            'title' => 'Data Kebutuhan per Wilayah'
-          ];
-        return view('FrontEnd.Penduduk.v_kebutuhan');
+        return view('FrontEnd.Penduduk.v_kebutuhan',['title' => 'Data Kebutuhan per Wilayah']);
     }
     public function Pekerjaan()
     {
-        $this->vars = [
-            'title' => 'Data Pekerjaan'
-          ];
-        return view('FrontEnd.Penduduk.v_pekerjaan');
+        return view('FrontEnd.Penduduk.v_pekerjaan',['title' => 'Data Pekerjaan']);
     }
     public function umkm()
     {
-        $this->vars = [
-            'title' => 'Data UMKM'
-          ];
-        return view('FrontEnd.Penduduk.v_UMKM');
+        return view('FrontEnd.Penduduk.v_UMKM',['title' => 'Data UMKM']);
     }
     public function penduduk()
     {
-        $this->vars = [
-            'title' => 'Data Penduduk'
-          ];
-        return view('FrontEnd.Penduduk.v_penduduk');
+        return view('FrontEnd.Penduduk.v_penduduk',['title' => 'Data Penduduk']);
     }
 
     public function kabarDesa()
     {
-        $this->vars = [
-            'kabardesa' => Konten::where(['kategori' => 'Kabar Desa'])
-            ->where(['status' => 'Publish'])
-            ->get(),
+        return view('FrontEnd.v_kabar_desa',[
+            'kabardesa' => Konten::where(['kategori' => 'Kabar Desa'])->where(['status' => 'Publish'])->get(),
             'title' => 'Kabar Desa'
-        ];
-        return view('FrontEnd.v_kabar_desa',$this->vars);
+        ]);
     }
     public function detailkabar($slug)
     {
-        $this->vars = [
+        return view('FrontEnd.v_detail_artikel',[
             'Konten' => Konten::where(['slug' => $slug])->first(),
             'title' => 'Detail Artikel'
-        ];
-        return view('FrontEnd.v_detail_artikel',$this->vars);
+        ]);
     }
     public function artikel()
     {
-        $this->vars = [
-            'konten' => Konten::where(['kategori' => 'Artikel'])
-                        ->where(['status' => 'Publish'])
-                        ->get(),
+     
+        return view('FrontEnd.v_artikel',[
+            'konten' => Konten::where(['kategori' => 'Artikel'])->where(['status' => 'Publish'])->get(),
             'title' => 'Artikel'
-        ];
-        return view('FrontEnd.v_artikel',$this->vars);
+        ]);
     }
 
     // informasi website
     public function informasi()
     {
-
-        $data = [
+        return view('FrontEnd.Info_website.v_info_utama',[
             'about' => Tentang::where(['id' =>1])->first(),
             'title' => 'Tentang Website'
-        ];
-        return view('FrontEnd.Info_website.v_info_utama',$data);
+        ]);
     }
 
     // sosial media
     public function hubungi()
     {
-        $data = [
-            'pengaduan' => DB::table('pengaduan')
+        return view('FrontEnd.Info_website.v_hubungi',[
+              'pengaduan' => DB::table('pengaduan')
                           ->join('penduduk', 'penduduk.id', '=', 'pengaduan.penduduk_id')
                           ->select('pengaduan.*','penduduk.*')
                           ->get(),
               'title' => 'Data Pengaduan' 
-          ];
-        return view('FrontEnd.Info_website.v_hubungi',$data);
+        ]);
     }
-
-
-
-
-
 }

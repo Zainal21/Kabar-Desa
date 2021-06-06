@@ -12,18 +12,12 @@ class UMKMController extends Controller
 {
     public function index()
     {
-        $this->vars = [
-            'title' => 'Data Pengaduan'
-        ];
-        return view('BackEnd.UMKM.v_umkm',$this->vars);
+        return view('BackEnd.UMKM.v_umkm',['title' => 'Data Pengaduan']);
     }
 
     public function create(Request $requets)
     {
-        $data = [
-            'nik' => penduduk::all()
-        ];
-        return view('BackEnd.UMKM.v_create',$data);
+        return view('BackEnd.UMKM.v_create',['nik' => penduduk::all()]);
     }
     public function store(Request $requets)
     {
@@ -57,11 +51,10 @@ class UMKMController extends Controller
     }
     public function edit($id)
     {
-        $data =[
-           'data' => UMKM::find($id)->first(),
+        return view('BackEnd.UMKM.v_edit',[
+            'data' => UMKM::find($id)->first(),
            'nik' => penduduk::all()
-        ];
-        return view('BackEnd.UMKM.v_edit',$data);
+        ]);
     }
     public function update(Request $requets)
     {

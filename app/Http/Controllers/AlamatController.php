@@ -12,20 +12,13 @@ class AlamatController extends Controller
 {
     public function provinsi()
     {
-        $this->vars = [
-            'title' => 'Data Provinsi'
-        ];
-        return view('BackEnd.Helper.Provinsi',$this->vars);
+        return view('BackEnd.Helper.Provinsi',[
+             'title' => 'Data Provinsi'
+        ]);
     }
-
-  
-
     public function kabupaten()
     {
-        $this->vars = [
-          'provinsi' =>  provinsi::all()
-        ];
-        return view('BackEnd.Helper.Kabupaten',$this->vars);
+        return view('BackEnd.Helper.Kabupaten',['provinsi' =>  provinsi::all()]);
     }
     public function kabupatenstore(Request $request)
     {
@@ -45,11 +38,10 @@ class AlamatController extends Controller
     }
     public function kabupatenedit($id)
     {   
-        $this->vars = [
-           'kab' => kabupaten::find($id),
+        return view('BackEnd.Helper.v_detail_kabuputen',[
+            'kab' => kabupaten::find($id),
            'prov' => provinsi::all(),
-        ];
-        return view('BackEnd.Helper.v_detail_kabuputen',$this->vars);
+        ]);
 
     }
     public function kabupatenupdate(Request $request,$id)
@@ -90,10 +82,7 @@ class AlamatController extends Controller
     }
     public function provinsiedit($id)
     {
-        $this->vars = [
-            'prov' => provinsi::find($id),
-        ];
-        return view('BackEnd.Helper.v_detail_provinsi',$this->vars);
+        return view('BackEnd.Helper.v_detail_provinsi',['prov' => provinsi::finfOrfail($id),]);
     }
     public function provinsiupdate(Request $request)
     {

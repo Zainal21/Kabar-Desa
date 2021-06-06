@@ -18,22 +18,22 @@ class AspirasiController extends Controller
 {
     public function index()
     {
-        $this->vars = [
+        $data = [
           'pengaduan' => DB::table('pengaduan')
                         ->join('penduduk', 'penduduk.id', '=', 'pengaduan.penduduk_id')
                         ->select('pengaduan.*','penduduk.*')
                         ->get(),
             'title' => 'Data Pengaduan' 
         ];
-        return view('BackEnd.Aspirasi.A_Daftar_Aspirasi',$this->vars);
+        return view('BackEnd.Aspirasi.A_Daftar_Aspirasi',$data);
     }
     public function create()
     {
-        $this->vars = [
+        $data = [
             'penduduk' => penduduk::all(),
             'title' => 'Buat Aspirasi'
         ];
-        return view('BackEnd.Aspirasi.A_Aspirasi',$this->vars);
+        return view('BackEnd.Aspirasi.A_Aspirasi',$data);
     }
 
     Public function store(Request $request)
@@ -72,7 +72,7 @@ class AspirasiController extends Controller
 
     public function show($slug)
     {
-     $this->vars = [
+     $data = [
           'items' =>  DB::table('pengaduan')
                         ->join('penduduk', 'penduduk.id' ,'=','pengaduan.penduduk_id') 
                         ->where(['slug' => $slug])
@@ -82,12 +82,12 @@ class AspirasiController extends Controller
       ];
         
         // dd($data);
-        return view('BackEnd.Aspirasi.A_Details',$this->vars);
+        return view('BackEnd.Aspirasi.A_Details',$data);
     }
 
     public function details($slug)
     {
-        $this->vars = [
+        $data = [
             'items' =>  DB::table('pengaduan')
                     ->join('penduduk', 'penduduk.id' ,'=','pengaduan.penduduk_id') 
                     ->where(['slug' => $slug])
@@ -96,7 +96,7 @@ class AspirasiController extends Controller
             'title' => 'Detail Pengaduan'
                 
         ];
-        return view('BackEnd.Aspirasi.A_Tanggapan',$this->vars);
+        return view('BackEnd.Aspirasi.A_Tanggapan',$data);
     }
 
     public function send(Request $request, $slug)
@@ -127,7 +127,7 @@ class AspirasiController extends Controller
     }
     public function tanggapandetail($slug)
     {
-        $this->vars = [
+        $data = [
             'items' => DB::table('tanggapan')
                         ->join('pengaduan', 'pengaduan.id' ,'=','tanggapan.pengaduan_id') 
                         ->where(['slug' => $slug])
@@ -135,7 +135,7 @@ class AspirasiController extends Controller
                         ->get(),
                 'title' => 'Detail Tanggapan'
         ];
-        return view('BackEnd.Aspirasi.A_Details_Tanggapan',$this->vars);
+        return view('BackEnd.Aspirasi.A_Details_Tanggapan',$data);
     }
 
   

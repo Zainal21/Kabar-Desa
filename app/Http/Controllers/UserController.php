@@ -66,18 +66,15 @@ class UserController extends Controller
     }
     public function edit($id)
     {
-        $data = [
-            'user' => User::find($id) 
-        ];
-        return view('BackEnd.Petugas.P_Edit',$data);
+        return view('BackEnd.Petugas.P_Edit',[
+             'user' => User::findOrfail($id) 
+        ]);
     }
     public function update(Request $request)
     {
         $rule = [
             'email' => 'required',
             'name' => 'required',
-        
-        
         ];
         $error = Validator::make($request->all(),$rule);
         if($error->fails()){
@@ -87,7 +84,6 @@ class UserController extends Controller
                 'name' => $request->name,
                 'email' => $request->email,
                 'role' => $request->role,
-                
             ]);
             return response()->json(['success' => 'Data User diubah dari database']);
             }

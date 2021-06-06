@@ -8,9 +8,6 @@ class ReportController extends Controller
 {
     public function index()
     {
-      $this->vars = [
-        'title' => 'Report'
-      ];
-        return view('BackEnd.Report.v_report',$this->vars);
+        return view('BackEnd.Report.v_report',[ 'title' => 'Report']);
     }
 }
